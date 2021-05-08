@@ -71,22 +71,29 @@
 
     </div>
   </header><!-- End Header -->
-
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="clearfix" style="height:50vh">
-      <div class="row justify-content-center align-self-center" data-aos="fade-up">
-        <div class="col-lg-6 intro-info order-lg-first order-last" data-aos="zoom-in" data-aos-delay="100">
-          <h2>회원 <span>가입</span></h2>
-          <h4>회원가입 후 마음에 드는 강아지를 저장해보세요!</h4>
-        </div>
-      </div>
-
-  </section><!-- End Hero -->
-  
-  <main id="main">
-       
-    <!-- ======= Team Section ======= -->
+<c:choose>
+	<c:when test="${loginVO == null}">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href='logIn';	
+		</script>
+	</c:when>
+	<c:otherwise>
+	
+	  <!-- ======= Hero Section ======= -->
+	  <section id="hero" class="clearfix" style="height:50vh">
+	      <div class="row justify-content-center align-self-center" data-aos="fade-up">
+	        <div class="col-lg-6 intro-info order-lg-first order-last" data-aos="zoom-in" data-aos-delay="100">
+	          <h2><span>${loginVO.name }</span>님의 마이페이지</h2>
+	          <h4>회원님의 정보와 저장한 강아지들을 확인하실 수 있습니다.</h4>
+	        </div>
+	      </div>
+	
+	  </section><!-- End Hero -->
+	  
+	  <main id="main">
+	  
+	<!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">
       <div class="container" data-aos="fade-up">
         <div class="row">
@@ -95,56 +102,28 @@
         <div class="col-sm-4">
 	        <div class="form">
 	
-	           <form name="joinfrm" action="insertMember" method="post" role="form" class="php-email-form">
+	           <form name="joinfrm" action="updtMember" method="post" role="form" class="php-email-form">
 	             <div class="form-group">
-	               <input type="text" name="name" class="form-control" id="name" placeholder="이름" required="">
+	               <input type="text" name="name" class="form-control" id="name" value="${loginVO.name }" readonly>
 	             </div>
 	             <div class="form-group mt-3">
-		             <div class="row">
-			             <div class="col-sm-9">
-			               <input type="email" class="form-control" name="email" id="email" placeholder="이메일" required="">
-			             </div>
-			             <div class="col-sm-3">
-			               <input type="button" id="btn" onclick="checkEmail()" value="중복확인">
-		               </div>
-	               	</div>
-	               <input type="hidden" id="checkEmail_" value="0">
+			        <input type="email" class="form-control" name="email" id="email" value="${loginVO.email }" readonly>
 	             </div>
 	             <div class="form-group mt-3">
-		             <div class="row">
-			             <div class="col-sm-8">
-			               <input type="text" class="form-control" name="emailNum" id="emailNum" placeholder="이메일 인증번호" required="">
-			             </div>
-			             <div class="col-sm-4">
-			               <input type="button" id="emailbtn" onclick="checkEmailNum()" value="인증번호 확인">
-		               </div>
-	               	</div>
-	               <input type="hidden" id="checkEmailNum_" value="0">
-	               <input type="hidden" id="emailNum_" value="0">
+		          	<input type="text" class="form-control" name="id" id="id" value="${loginVO.id }" readonly>
 	             </div>
 	             <div class="form-group mt-3">
-	             	<div class="row">
-		             	<div class="col-sm-9">
-		               		<input type="text" class="form-control" name="id" id="id" placeholder="아이디" required="">
-		               	</div>
-		               	<div class="col-sm-3">
-		               		<input type="button" id="btn" onclick="checkId()" value="중복확인">
-		               	</div>
-	               	</div>
-	               <input type="hidden" id="checkId_" value="0">
+	               <input type="password" class="form-control" name="pw" id="pw" placeholder="비밀번호">
 	             </div>
 	             <div class="form-group mt-3">
-	               <input type="password" class="form-control" name="pw" id="pw" placeholder="비밀번호" required="">
-	             </div>
-	             <div class="form-group mt-3">
-	               <input type="password" class="form-control" name="pw2" id="pw2" placeholder="비밀번호확인" required="">
+	               <input type="password" class="form-control" name="pw2" id="pw2" placeholder="비밀번호확인" >
 	             </div>
 	
 	             <div class="my-3">
 
 	             </div>
 	
-	             <div class="text-center"><button type="button" onclick="checkAll()">Join</button></div>
+	             <div class="text-center"><button type="button" onclick="checkAll()">수정</button></div>
 	           </form>
 	
 	         </div>
@@ -152,12 +131,35 @@
          
          <div class="col-sm-4"></div>
 
-        </div>
+        </div>		
 
       </div>
     </section><!-- End Team Section -->
+    
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+          <div class="section-header">
+          	<h3>저장한 강아지 목록</h3>
+          </div>
+          <br><br>
+        <div class="row">
+        
+		<input type="hidden" id="page" value="${page}">
+		  
+        <div class="row" id="result"></div>
+        
+        <article id="paging" class="paging"></article>
+	</div>
 
-  </main><!-- End #main -->
+      </div>
+    </section><!-- End Team Section -->
+	
+	  </main><!-- End #main -->
+	
+	</c:otherwise>
+</c:choose>
+
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="section-bg">
@@ -233,6 +235,7 @@
   <script src="${pageContext.request.contextPath}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="${pageContext.request.contextPath}/assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="${pageContext.request.contextPath}/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/vendor/php-email-form/validate.js"></script>
   <script src="${pageContext.request.contextPath}/assets/vendor/purecounter/purecounter.js"></script>
   <script src="${pageContext.request.contextPath}/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
@@ -243,142 +246,170 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   
   <script>
-	  function checkId(){
-		  
-		  var id = $("input#id").val();
-		  var data = {id:id}
-		  
-		  $.ajax({
-		       url : "${pageContext.request.contextPath}/checkId",
-		       type : "post",
-		       data : data,
-		       success : function(result) {
-		           if(result == 'fail') {
-		               alert("이미 존재하는 아이디입니다.");
-		               document.getElementById("id").focus();
-		               $("input#checkId_").val(0);
-		           } else {
-		        	   alert("사용가능한 아이디입니다.");
-		        	   $("input#checkId_").val(1);
-		           }
-		       },
-		       error: function(data, status, er) {
-		           alert("[error] data : " + data + ", status : " + status);
-		       }
-		       
-		    });
-		  
-	  }
+  function checkAll(){
+	  	var frm = document.joinfrm;
+		var name = $("input#name").val();
+		var pw = $("input#pw").val();
+		var pw2 = $("input#pw2").val();
+		
+		var RegExp = /^[a-zA-z0-9]{4,12}$/;
+		
+		if (!RegExp.test(pw)) {
+          alert("비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다");
+          document.getElementById("pw").focus();
+      	} else if(pw != pw2){
+			alert("비밀번호가 일치하지 않습니다.");
+			document.getElementById("pw").focus();
+		} else {
+			frm.submit();
+			alert("회원님의 정보가 수정되었습니다!");
+		}		
 	  
-	  function checkEmail(){
-		  
-		  var email = $("input#email").val();
-		  var data = {email:email}
-		  
-		  $.ajax({
-		       url : "${pageContext.request.contextPath}/checkEmail",
-		       type : "post",
-		       data : data,
-		       success : function(result) {
-		           if(result == 'fail') {
-		               alert("이미 존재하는 이메일입니다.");
-		               document.getElementById("email").focus();
-		               $("input#checkEmail_").val(0);
-		           } else {
-		        	   alert("사용가능한 이메일입니다.");
-		        	   alert("이메일 인증번호를 발송 중입니다. 잠시만 기다려주세요.");
-		        	   $("input#checkEmail_").val(1);
-		        	   checkEmail2();
-		           }
-		       },
-		       error: function(data, status, er) {
-		           alert("[error] data : " + data + ", status : " + status);
-		       }
-		       
-		    });
-		  
-	  }
-	  
-	  function checkEmail2(){
-		  
-		  var email = $("input#email").val();
-		  var data = {email:email}
+}
 
+  $(document).ready(function(){
+		var page = $("input#page").val();
+	    loadPage(page);
+	   	showPagination();
+	 });
+	
+	function search(){
+		var frm = document.frm;
+		var page = frm.page.value;
+		var gender = frm.gender.value;
+		var neuter = frm.neuter.value;
+		var location = frm.location.value;
+		
+		frm.submit();
+		loadPage(page, gender, neuter, location);
+		showPagination();
+	}
+	
+	// 페이지네이션
+	function showPagination(){
+		var html = "<ul>";
+		var curPage = parseInt($("input#page").val());
+		var calPage = parseInt((curPage-1) / 10); 
+		var pagesize = 0;
+		var total = ${total};
+		var totalPages = parseInt(total / 12) + 1;
 		  
-		  $.ajax({
-		       url : "${pageContext.request.contextPath}/checkEmailNum",
-		       type : "post",
-		       data : data,
-		       success : function(result) {
-		           if(result == 'fail') {
-		               alert("인증번호 발송에 실패하였습니다. 이메일을 다시 확인해주세요.");
-		               document.getElementById("emailNum").focus();
-		               $("input#checkEmailNum_").val(0);
-		           } else {
-		        	   alert("인증번호를 발송했습니다. 이메일을 확인해주세요.");
-		        	   $("input#emailNum_").val(result);
-		           }
-		       },
-		       error: function(data, status, er) {
-		           alert("인증번호 발송에 실패하였습니다. 이메일을 다시 확인해주세요.");
+		if((calPage+1)*10 > total/12){
+			pagesize = total/12 - (calPage)*10 +1;
+		}else{
+		  	pagesize = 10;
+		}
+		
+		if(calPage != 0) {
+			html += "<li class='prev' id='dogPrev'><a></a></li>";
+		}
+		 
+		 for(var i = 1; i <=  pagesize; i++){
+			if(curPage == calPage*10 + i){
+				html +=   "<li class='num current' id='dogNum'><a>" + (calPage*10 + i) + "</a></li>";	   
+			}else{
+				html +=   "<li class='num' id='dogNum'><a>" + (calPage*10 + i) + "</a></li>";			   
+			}	      
+		 }
+		    	      
+		 if(calPage != parseInt(totalPages / 10)){
+		    html += "<li class='next' id='dogNext'><a></a></li>";
+		 }
+		 html += '</ul>';
+		 
+		$("#paging").html(html);
+		
+		$("#dogNum.num").click(function(){   
+		   	curPage = parseInt($(this).text());
+			$("input#page").val(curPage);
+		   	loadPage(curPage);
+		   	showPagination();
+		});
+		
+		$("#dogNext.next").click(function(){
+			curPage = (calPage + 1) * 10 + 1;
+			$("input#page").val(curPage);
+			loadPage(curPage);
+			showPagination();
+		});
+		
+		$("#dogPrev.prev").click(function(){   
+			curPage = (calPage - 1) * 10 + 1;
+			$("input#page").val(curPage);
+			loadPage(curPage);
+			showPagination();
+		});
+
+	}
+
+	 function loadPage(page) {
+
+	    $.ajax({
+	       url : "${pageContext.request.contextPath}/getMyDogList?page=" + page + "&uid=" + ${loginVO.uid},
+	       type : "get",
+	       dataType: 'json',
+	       ontentType:  "application/json",
+	       mimeType: 'application/json',
+	       success : function(data, status) {
+	           if(status == "success") {
+	               if(updateList(data)) { // 페이지 업데이트
+	                  $("input#page").val(page);
+	               }
+	           }
+	       },
+	       error: function(data, status, er) {
+	           alert("[error] data : " + data + ", status : " + status);
+	       }
+	       
+	    });
+	 }
+	 
+	 function updateList(jsonObj) {
+	 	 
+	  	var result =  '';
+	       
+	       var count = jsonObj.count;
+	       var items = jsonObj.list;
+	       
+	       if(count == 0){
+	    	   result += '<div class="section-header">';
+	    	   result += '<h5>저장한 강아지가 없습니다</h5>';
+	    	   result += '</div>';
+	       }
+	       else{
+		       for(var i = 0; i < count; i++) {
+		    	   
+		    	   result += '<div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">';
+		    	   result += '<div class="member">';
+		    	   result += '<a href="dogInfo?cid=' + items[i].cid +'"><img src="' + items[i].img + '" class="dog_img"></a>';
+		    	   result += '<div class="member-info">';
+		    	   result += '<div class="member-info-content">';
+		    	   result += '<h4>' + items[i].kind + ' ' + items[i].color + '</h4>';
+		    	   result += '<span>' + items[i].careNm + '</span>';
+		    	   result += '<span>' + items[i].age + '</span>';
+		    	   result += '<span>';
+		    	   if(items[i].sex == 'F'){
+		    		   result += '암컷&nbsp';
+		    	   } else if(items[i].sex == 'M'){
+		    		   result += '수컷&nbsp';
+		    	   } else {
+		    		   result += '성별 미상&nbsp';
+		    	   }
+		    	   if(items[i].neuter == 'Y'){
+		    		   result += '중성화 O';
+		    	   } else if(items[i].neuter == 'N'){
+		    		   result += '중성화 X';
+		    	   } else {
+		    		   result += '중성화여부 미상';
+		    	   }
+		    	   result += '</span></div></div></div></div>';	
 		       }
-		       
-		    });
-		  
-	  }
-	  
-	  function checkEmailNum(){
-		  if($("input#emailNum").val() == $("input#emailNum_").val()){
-       	   alert("인증이 완료되었습니다.");
-       	   $("input#checkEmailNum_").val(1);
-       	   document.getElementById('emailNum').disabled = true ;
-   	   } else{
-   		   alert("인증에 실패하였습니다. 인증번호를 다시 확인해주세요.");
-              document.getElementById("emailNum").focus();
-              $("input#checkEmailNum_").val(0);
-   	   }
-		  
-	  }
-	  
-	  function checkAll(){
-		  	var frm = document.joinfrm;
-			var name = $("input#name").val();
-			var email = $("input#email").val();
-			var id = $("input#id").val();
-			var pw = $("input#pw").val();
-			var pw2 = $("input#pw2").val();
-			
-			var RegExp = /^[a-zA-z0-9]{4,12}$/;
-			
-			if(name.length == 0 || name.length > 10){
-				alert("10자 이내의 이름을 입력해주세요.");
-				document.getElementById("name").focus();
-			} else if (!RegExp.test(id)) {
-	            alert("아이디는 영문 대소문자와 숫자 4~12자리로 입력해야합니다");
-	            document.getElementById("id").focus();
-	        } else if (!RegExp.test(pw)) {
-	            alert("비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다");
-	            document.getElementById("pw").focus();
-	        } else if($("input#checkEmail_").val() == 0){
-				alert("이메일 중복확인은 필수입니다.");
-				document.getElementById("emailNum").focus();
-			} else if($("input#checkEmailNum_").val() == 0){
-				alert("이메일 인증은 필수입니다.");
-				document.getElementById("email").focus();
-			} else if($("input#checkId_").val() == 0){
-				alert("아이디 중복확인은 필수입니다.");
-				document.getElementById("id").focus();
-			} else if(pw != pw2){
-				alert("비밀번호가 일치하지 않습니다.");
-				document.getElementById("pw").focus();
-			} else {
-				frm.submit();
-				alert("AbanDog의 회원이 되신 것을 축하합니다!");
-			}		
-		  
-	  }
-  
-  </script>
+	       }
+	       $("#result").html(result); // 테이블 내용 업데이트
+	       
+	 }			 
+
+	</script>
   
 </body>
 </html>

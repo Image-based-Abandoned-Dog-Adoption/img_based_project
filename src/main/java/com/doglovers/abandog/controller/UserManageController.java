@@ -142,19 +142,15 @@ public class UserManageController {
 	}
 
 	@RequestMapping("/updtMember")
-	public String updtMember(@ModelAttribute("MemberDTO") MemberDTO userVO, HttpServletRequest request, Model model)
+	public String updtMember(@ModelAttribute("MemberDTO") MemberDTO userVO, Model model)
 			throws Exception {
-		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		HttpSession session = httpRequest.getSession();
-		session.invalidate();
 		
 		PasswordEncoding pe = new PasswordEncoding();
 		String se_pw = userVO.getPw();
 		userVO.setPw(pe.encode(se_pw));
 
 		UserManageDAO.updtMember(userVO);
-		model.addAttribute("message", "다시 로그인하여 주세요.");
-		return "redirect:main";
+		return "mypage";
 	}
 
 	// id찾기(이름과 이메일을 통해서 찾기) 지금은 ajax로 success중 result가 비어있으면 없는거라고, result가 있으면
@@ -280,6 +276,36 @@ public class UserManageController {
 	@RequestMapping("/logIn")
 	public String logIn(Model model) {
 		return "logIn";
+	}
+	
+	@RequestMapping("/mypage")
+	public String mypage(Model model, int uid) {
+		DogDAO dao =  C.sqlSession.getMapper(DogDAO.class);
+		model.addAttribute("uid", uid);
+		model.addAttribute("total", dao.selectMyDogListNum(uid));
+		model.addAttribute("page", 1);
+		return "mypage";
+	}
+	
+	@RequestMapping("/getMyDogList")
+	@ResponseBody
+	public Result getDogList(Model model, int page, int uid) {
+		model.addAttribute("page", page);
+		model.addAttribute("uid", uid);
+		Pagination pagination = new Pagination();
+		
+		pagination.setListSize(12);
+		pagination.setStartList((page - 1) * 12);
+		pagination.setUid(uid);
+		
+		DogDAO dao =  C.sqlSession.getMapper(DogDAO.class);
+		Result result = new Result();
+		
+		ArrayList<DogDTO> list = dao.selectMyDogList2(pagination);
+		result.setList(list);
+		result.setCount(list.size());
+		
+		return result;
 	}
 	
 }

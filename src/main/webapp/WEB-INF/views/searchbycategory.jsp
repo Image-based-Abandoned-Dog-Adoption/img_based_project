@@ -61,7 +61,7 @@
 	          <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/logIn">Log In</a></li>  	
           	</c:when>
           	<c:otherwise>
-          	  <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/mypage">My Page</a></li>
+          	  <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/mypage?uid=${loginVO.uid}">My Page</a></li>
           	  <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/logout">Log Out</a></li>
           	</c:otherwise>
           </c:choose>
@@ -90,47 +90,101 @@
   <input type="hidden" id="gender" value="${gender}">
   <input type="hidden" id="neuter" value="${neuter}">
   <input type="hidden" id="location" value="${location}">
+  <input type="hidden" id="kind" value="${kind}">
+  <input type="hidden" id="age" value="${age}">
+  <input type="hidden" id="marks" value="${marks}">
        
     <!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-header">        
           <form name="frm" method="post" accept-charset="utf-8" action="searchbycategory2">
-			<label id="letter" for="select">성별</label>
-			<select name="gender" id="select">
-			  <option value="0" <c:if test="${gender == 0}">selected</c:if>>선택안함</option>
-			  <option value="1" <c:if test="${gender == 1}">selected</c:if>>암컷</option>
-			  <option value="2" <c:if test="${gender == 2}">selected</c:if>>수컷</option>
-			</select>
-			<label id="letter" for="select">중성화여부</label>
-			<select name="neuter" id="select">
-			  <option value="0" <c:if test="${neuter == 0}">selected</c:if>>선택안함</option>
-			  <option value="1" <c:if test="${neuter == 1}">selected</c:if>>O</option>
-			  <option value="2" <c:if test="${neuter == 2}">selected</c:if>>X</option>
-			</select>
-			<label id="letter" for="select">보호소 지역</label>
-			<select name="location" id="select">
-			  <option value="0" <c:if test="${location == 0}">selected</c:if>>선택안함</option>
-			  <option value="1" <c:if test="${location == 1}">selected</c:if>>강원도</option>
-			  <option value="2" <c:if test="${location == 2}">selected</c:if>>경기도</option>
-			  <option value="3" <c:if test="${location == 3}">selected</c:if>>경상남도</option>
-			  <option value="4" <c:if test="${location == 4}">selected</c:if>>경상북도</option>
-			  <option value="5" <c:if test="${location == 5}">selected</c:if>>광주광역시</option>
-			  <option value="6" <c:if test="${location == 6}">selected</c:if>>대구광역시</option>
-			  <option value="7" <c:if test="${location == 7}">selected</c:if>>대전광역시</option>
-			  <option value="8" <c:if test="${location == 8}">selected</c:if>>부산광역시</option>
-			  <option value="9" <c:if test="${location == 9}">selected</c:if>>서울특별시</option>
-			  <option value="10" <c:if test="${location == 10}">selected</c:if>>세종특별자치시</option>
-			  <option value="11" <c:if test="${location == 11}">selected</c:if>>울산광역시</option>
-			  <option value="12" <c:if test="${location == 12}">selected</c:if>>인천광역시</option>
-			  <option value="13" <c:if test="${location == 13}">selected</c:if>>전라남도</option>
-			  <option value="14" <c:if test="${location == 14}">selected</c:if>>전라북도</option>
-			  <option value="15" <c:if test="${location == 15}">selected</c:if>>제주특별자치도</option>
-			  <option value="16" <c:if test="${location == 16}">selected</c:if>>충청남도</option>
-			  <option value="17" <c:if test="${location == 17}">selected</c:if>>충청북도</option>
-			</select>
+	          <table>
+	          	<tr>
+	          		<td>
+	          			<label id="letter" for="select">성별</label>
+	          		</td>
+	          		<td>
+						<select name="gender" id="select">
+						  <option value="0" <c:if test="${gender == 0}">selected</c:if>>선택안함</option>
+						  <option value="1" <c:if test="${gender == 1}">selected</c:if>>암컷</option>
+						  <option value="2" <c:if test="${gender == 2}">selected</c:if>>수컷</option>
+						</select>
+	          		</td>
+	          		<td>
+	          			<label id="letter" for="select">중성화여부</label>
+	          		</td>
+	          		<td>
+						<select name="neuter" id="select">
+						  <option value="0" <c:if test="${neuter == 0}">selected</c:if>>선택안함</option>
+						  <option value="1" <c:if test="${neuter == 1}">selected</c:if>>O</option>
+						  <option value="2" <c:if test="${neuter == 2}">selected</c:if>>X</option>
+						</select>
+	          		</td>
+	          		<td>
+	          			<label id="letter" for="select">보호소 지역</label>
+	          		</td>
+	          		<td>
+						<select name="location" id="select">
+						  <option value="0" <c:if test="${location == 0}">selected</c:if>>선택안함</option>
+						  <option value="1" <c:if test="${location == 1}">selected</c:if>>강원도</option>
+						  <option value="2" <c:if test="${location == 2}">selected</c:if>>경기도</option>
+						  <option value="3" <c:if test="${location == 3}">selected</c:if>>경상남도</option>
+						  <option value="4" <c:if test="${location == 4}">selected</c:if>>경상북도</option>
+						  <option value="5" <c:if test="${location == 5}">selected</c:if>>광주광역시</option>
+						  <option value="6" <c:if test="${location == 6}">selected</c:if>>대구광역시</option>
+						  <option value="7" <c:if test="${location == 7}">selected</c:if>>대전광역시</option>
+						  <option value="8" <c:if test="${location == 8}">selected</c:if>>부산광역시</option>
+						  <option value="9" <c:if test="${location == 9}">selected</c:if>>서울특별시</option>
+						  <option value="10" <c:if test="${location == 10}">selected</c:if>>세종특별자치시</option>
+						  <option value="11" <c:if test="${location == 11}">selected</c:if>>울산광역시</option>
+						  <option value="12" <c:if test="${location == 12}">selected</c:if>>인천광역시</option>
+						  <option value="13" <c:if test="${location == 13}">selected</c:if>>전라남도</option>
+						  <option value="14" <c:if test="${location == 14}">selected</c:if>>전라북도</option>
+						  <option value="15" <c:if test="${location == 15}">selected</c:if>>제주특별자치도</option>
+						  <option value="16" <c:if test="${location == 16}">selected</c:if>>충청남도</option>
+						  <option value="17" <c:if test="${location == 17}">selected</c:if>>충청북도</option>
+						</select>
+	          		</td>
+	          		<td></td>
+	          	</tr>
+	          	<tr>
+	          		<td>
+	          			<label id="letter" for="select">종</label>
+	          		</td>
+	          		<td>
+						<select name="kind" id="select">
+						  <option value="null" <c:if test="${kind == 'null'}">selected</c:if>>선택안함</option>
+						  <c:forEach var="kinds" items="${kinds}">
+						    <option value="${kinds.kind}" <c:if test="${kind == kinds.kind}">selected</c:if>>${kinds.kind}</option>
+						  </c:forEach>
+						</select>
+	          		</td>
+	          		<td>
+	          			<label id="letter" for="select">나이</label>
+	          		</td>
+	          		<td>
+						<select name="age" id="select">
+						  <option value="null" <c:if test="${age == 'null'}">selected</c:if>>선택안함</option>
+						  <c:forEach var="ages" items="${ages}">
+						    <option value="${ages.age}" <c:if test="${age == ages.age}">selected</c:if>>${ages.age}</option>
+						  </c:forEach>
+						</select>
+	          		</td>
+	          		<td>
+	          			<label id="letter" for="input">특징</label>
+	          		</td>
+	          		<td>
+						<input id="mark" type="text" name="marks" value="${marks}">
+	          		</td>
+	          		<td>
+						 <input type="button" id="btn" onclick="search()" value="검색">		
+	          		</td>
+	          	</tr>
+	          	
+	          </table>
+
 			 <input type="hidden" name="page" value="1">
-			 <input type="button" id="btn" onclick="search()" value="검색">
 
 		 </form>
         </div>
@@ -238,11 +292,7 @@
   <script type="text/javascript">
 
 	$(document).ready(function(){
-		var page = $("input#page").val();
-		var gender = $("input#gender").val();
-		var neuter = $("input#neuter").val();
-		var location = $("input#location").val();
-	    loadPage(page, gender, neuter, location);
+	    loadPage();
 	   	showPagination();
 	 });
 	
@@ -252,9 +302,15 @@
 		var gender = frm.gender.value;
 		var neuter = frm.neuter.value;
 		var location = frm.location.value;
+		var kind = frm.kind.value;
+		$("input#kind").val(kind);
+		var age = frm.age.value;
+		$("input#age").val(age);
+		var marks = frm.marks.value;
+		$("input#marks").val(marks);
 		
 		frm.submit();
-		loadPage(page, gender, neuter, location);
+		loadPage();
 		showPagination();
 	}
 	
@@ -298,31 +354,40 @@
 		$("#dogNum.num").click(function(){   
 		   	curPage = parseInt($(this).text());
 			$("input#page").val(curPage);
-		   	loadPage(curPage, gender, neuter, location);
+		   	loadPage();
 		   	showPagination();
 		});
 		
 		$("#dogNext.next").click(function(){
 			curPage = (calPage + 1) * 10 + 1;
 			$("input#page").val(curPage);
-			loadPage(curPage, gender, neuter, location);
+			loadPage();
 			showPagination();
 		});
 		
 		$("#dogPrev.prev").click(function(){   
 			curPage = (calPage - 1) * 10 + 1;
 			$("input#page").val(curPage);
-			loadPage(curPage, gender, neuter, location);
+			loadPage();
 			showPagination();
 		});
 
 	}
 
-	 function loadPage(page, gender, neuter, location) {
-
+	 function loadPage() {
+	  	var page = $("input#page").val();
+	  	var gender = $("input#gender").val();
+	 	var neuter = $("input#neuter").val();
+	  	var location = $("input#location").val();
+	  	var kind = $("input#kind").val();
+	  	var age = $("input#age").val();
+		var marks = $("input#marks").val();
+	  	var data = {page:page, gender:gender, neuter:neuter, location:location, kind:kind, age:age, marks:marks}
+	  	
 	    $.ajax({
-	       url : "${pageContext.request.contextPath}/getDogList?page=" + page + "&gender=" + gender + "&neuter=" + neuter + "&location=" + location,
-	       type : "get",
+	       url : "${pageContext.request.contextPath}/getDogList",
+	       type : "post",
+	       data : data,
 	       dataType: 'json',
 	       ontentType:  "application/json",
 	       mimeType: 'application/json',
@@ -334,6 +399,8 @@
 	                  $("input#gender").val(gender);
 	                  $("input#neuter").val(neuter);
 	                  $("input#location").val(location);
+	                  $("input#kind").val(kind);
+	                  $("input#age").val(age);
 	               }
 	           }
 	       },
