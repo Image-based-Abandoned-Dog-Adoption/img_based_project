@@ -61,7 +61,7 @@
 	          <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/logIn">Log In</a></li>  	
           	</c:when>
           	<c:otherwise>
-          	  <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/mypage">My Page</a></li>
+          	  <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/mypage?uid=${loginVO.uid}">My Page</a></li>
           	  <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/logout">Log Out</a></li>
           	</c:otherwise>
           </c:choose>
@@ -171,6 +171,14 @@
 		                	</c:otherwise>
                 		</c:choose>
                 	</tr>
+                	<c:choose>
+                		<c:when test="${dog.marks != null}">
+		                	<tr>
+		                		<td><p><strong>특징</strong></p></td>
+		                		<td><p>${dog.marks}</p></td>
+		                	</tr>
+		                </c:when>
+                	</c:choose>
                 </table>
               </div>
 
@@ -182,7 +190,7 @@
         
         <div style="text-align: center; margin-top:70px;">
 	        <button id="btn2" type="button" onclick="history.back()">뒤로가기</button>
-	        <button id="btn2" type="button" onclick="location.href='saveDog'">저장하기</button>
+	        <button id="btn2" type="button" onclick="saveDog()">저장하기</button>
         </div>
 
       </div>
@@ -274,6 +282,42 @@
   
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  
+  <script>
+	function saveDog(){
+		
+	 	var loginVO = '${loginVO}';
+	 	
+		if(loginVO == null || loginVO == ''){
+			alert("로그인이 필요합니다.");
+			location.href='logIn';		
+		}else{
+			 var cid = '${dog.cid}';
+			 var uid = '${loginVO.uid}';
+			 var data = {cid:cid, uid:uid}
+			 
+			 $.ajax({
+			      url : "${pageContext.request.contextPath}/saveDog",
+			      type : "post",
+			      data : data,
+			      success : function(result) {
+			          if(result == "duplicate"){
+			        	  alert("이미 저장되어 있는 강아지 입니다.");
+			          } else if(result == "fail") {
+			              alert("저장에 실패했습니다. 다시 시도해주세요.");
+			          } else {
+			       	   	  alert("저장완료! 마이페이지에서 저장한 강아지를 확인해보세요.");
+			          }
+			      },
+			      error: function(data, status, er) {
+			   	   alert("오류가 발생했습니다. 다시 시도해주세요.");
+			      }
+			      
+			   });
+		}
+		 
+	}
+  </script>
   
 </body>
 </html>

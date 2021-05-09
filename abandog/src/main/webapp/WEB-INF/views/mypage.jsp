@@ -71,139 +71,95 @@
 
     </div>
   </header><!-- End Header -->
-
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="clearfix" style="height:50vh">
-      <div class="row justify-content-center align-self-center" data-aos="fade-up">
-        <div class="col-lg-6 intro-info order-lg-first order-last" data-aos="zoom-in" data-aos-delay="100">
-          <h2>강아지 <span>검색하기</span></h2>
-          <h4>카테고리별로 검색하여 원하는 강아지를 찾아보세요!</h4>
-        </div>
-      </div>
-
-  </section><!-- End Hero -->
-  
-  <main id="main">
-  
-  <input type="hidden" id="page" value="${page}">
-  <input type="hidden" id="gender" value="${gender}">
-  <input type="hidden" id="neuter" value="${neuter}">
-  <input type="hidden" id="location" value="${location}">
-  <input type="hidden" id="kind" value="${kind}">
-  <input type="hidden" id="age" value="${age}">
-  <input type="hidden" id="marks" value="${marks}">
-       
-    <!-- ======= Team Section ======= -->
+<c:choose>
+	<c:when test="${loginVO == null}">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href='logIn';	
+		</script>
+	</c:when>
+	<c:otherwise>
+	
+	  <!-- ======= Hero Section ======= -->
+	  <section id="hero" class="clearfix" style="height:50vh">
+	      <div class="row justify-content-center align-self-center" data-aos="fade-up">
+	        <div class="col-lg-6 intro-info order-lg-first order-last" data-aos="zoom-in" data-aos-delay="100">
+	          <h2><span>${loginVO.name }</span>님의 마이페이지</h2>
+	          <h4>회원님의 정보와 저장한 강아지들을 확인하실 수 있습니다.</h4>
+	        </div>
+	      </div>
+	
+	  </section><!-- End Hero -->
+	  
+	  <main id="main">
+	  
+	<!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">
       <div class="container" data-aos="fade-up">
-        <div class="section-header">        
-          <form name="frm" method="post" accept-charset="utf-8" action="searchbycategory2">
-	          <table>
-	          	<tr>
-	          		<td>
-	          			<label id="letter" for="select">성별</label>
-	          		</td>
-	          		<td>
-						<select name="gender" id="select">
-						  <option value="0" <c:if test="${gender == 0}">selected</c:if>>선택안함</option>
-						  <option value="1" <c:if test="${gender == 1}">selected</c:if>>암컷</option>
-						  <option value="2" <c:if test="${gender == 2}">selected</c:if>>수컷</option>
-						</select>
-	          		</td>
-	          		<td>
-	          			<label id="letter" for="select">중성화여부</label>
-	          		</td>
-	          		<td>
-						<select name="neuter" id="select">
-						  <option value="0" <c:if test="${neuter == 0}">selected</c:if>>선택안함</option>
-						  <option value="1" <c:if test="${neuter == 1}">selected</c:if>>O</option>
-						  <option value="2" <c:if test="${neuter == 2}">selected</c:if>>X</option>
-						</select>
-	          		</td>
-	          		<td>
-	          			<label id="letter" for="select">보호소 지역</label>
-	          		</td>
-	          		<td>
-						<select name="location" id="select">
-						  <option value="0" <c:if test="${location == 0}">selected</c:if>>선택안함</option>
-						  <option value="1" <c:if test="${location == 1}">selected</c:if>>강원도</option>
-						  <option value="2" <c:if test="${location == 2}">selected</c:if>>경기도</option>
-						  <option value="3" <c:if test="${location == 3}">selected</c:if>>경상남도</option>
-						  <option value="4" <c:if test="${location == 4}">selected</c:if>>경상북도</option>
-						  <option value="5" <c:if test="${location == 5}">selected</c:if>>광주광역시</option>
-						  <option value="6" <c:if test="${location == 6}">selected</c:if>>대구광역시</option>
-						  <option value="7" <c:if test="${location == 7}">selected</c:if>>대전광역시</option>
-						  <option value="8" <c:if test="${location == 8}">selected</c:if>>부산광역시</option>
-						  <option value="9" <c:if test="${location == 9}">selected</c:if>>서울특별시</option>
-						  <option value="10" <c:if test="${location == 10}">selected</c:if>>세종특별자치시</option>
-						  <option value="11" <c:if test="${location == 11}">selected</c:if>>울산광역시</option>
-						  <option value="12" <c:if test="${location == 12}">selected</c:if>>인천광역시</option>
-						  <option value="13" <c:if test="${location == 13}">selected</c:if>>전라남도</option>
-						  <option value="14" <c:if test="${location == 14}">selected</c:if>>전라북도</option>
-						  <option value="15" <c:if test="${location == 15}">selected</c:if>>제주특별자치도</option>
-						  <option value="16" <c:if test="${location == 16}">selected</c:if>>충청남도</option>
-						  <option value="17" <c:if test="${location == 17}">selected</c:if>>충청북도</option>
-						</select>
-	          		</td>
-	          		<td></td>
-	          	</tr>
-	          	<tr>
-	          		<td>
-	          			<label id="letter" for="select">종</label>
-	          		</td>
-	          		<td>
-						<select name="kind" id="select">
-						  <option value="null" <c:if test="${kind == 'null'}">selected</c:if>>선택안함</option>
-						  <c:forEach var="kinds" items="${kinds}">
-						    <option value="${kinds.kind}" <c:if test="${kind == kinds.kind}">selected</c:if>>${kinds.kind}</option>
-						  </c:forEach>
-						</select>
-	          		</td>
-	          		<td>
-	          			<label id="letter" for="select">나이</label>
-	          		</td>
-	          		<td>
-						<select name="age" id="select">
-						  <option value="null" <c:if test="${age == 'null'}">selected</c:if>>선택안함</option>
-						  <c:forEach var="ages" items="${ages}">
-						    <option value="${ages.age}" <c:if test="${age == ages.age}">selected</c:if>>${ages.age}</option>
-						  </c:forEach>
-						</select>
-	          		</td>
-	          		<td>
-	          			<label id="letter" for="input">특징</label>
-	          		</td>
-	          		<td>
-						<input id="mark" type="text" name="marks" value="${marks}">
-	          		</td>
-	          		<td>
-						 <input type="button" id="btn" onclick="search()" value="검색">		
-	          		</td>
-	          	</tr>
-	          	
-	          </table>
-
-			 <input type="hidden" name="page" value="1">
-
-		 </form>
-        </div>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-        <div class="row" id="result">
-    
-        </div>
+        <div class="row">
         
-        <article id="paging" class="paging">			
-		</article>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+	        <div class="form">
+	
+	           <form name="joinfrm" action="updtMember" method="post" role="form" class="php-email-form">
+	             <div class="form-group">
+	               <input type="text" name="name" class="form-control" id="name" value="${loginVO.name }" readonly>
+	             </div>
+	             <div class="form-group mt-3">
+			        <input type="email" class="form-control" name="email" id="email" value="${loginVO.email }" readonly>
+	             </div>
+	             <div class="form-group mt-3">
+		          	<input type="text" class="form-control" name="id" id="id" value="${loginVO.id }" readonly>
+	             </div>
+	             <div class="form-group mt-3">
+	               <input type="password" class="form-control" name="pw" id="pw" placeholder="비밀번호">
+	             </div>
+	             <div class="form-group mt-3">
+	               <input type="password" class="form-control" name="pw2" id="pw2" placeholder="비밀번호확인" >
+	             </div>
+	
+	             <div class="my-3">
+
+	             </div>
+	
+	             <div class="text-center"><button type="button" onclick="checkAll()">수정</button></div>
+	           </form>
+	
+	         </div>
+         </div>
+         
+         <div class="col-sm-4"></div>
+
+        </div>		
 
       </div>
     </section><!-- End Team Section -->
+    
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+          <div class="section-header">
+          	<h3>저장한 강아지 목록</h3>
+          </div>
+          <br><br>
+        <div class="row">
+        
+		<input type="hidden" id="page" value="${page}">
+		  
+        <div class="row" id="result"></div>
+        
+        <article id="paging" class="paging"></article>
+	</div>
 
-  </main><!-- End #main -->
+      </div>
+    </section><!-- End Team Section -->
+	
+	  </main><!-- End #main -->
+	
+	</c:otherwise>
+</c:choose>
+
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="section-bg">
@@ -289,9 +245,30 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   
-  <script type="text/javascript">
-	$(document).ready(function(){
-	    loadPage();
+  <script>
+  function checkAll(){
+	  	var frm = document.joinfrm;
+		var name = $("input#name").val();
+		var pw = $("input#pw").val();
+		var pw2 = $("input#pw2").val();
+		
+		var RegExp = /^[a-zA-z0-9]{4,12}$/;
+		
+		if (!RegExp.test(pw)) {
+          alert("비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다");
+          document.getElementById("pw").focus();
+      	} else if(pw != pw2){
+			alert("비밀번호가 일치하지 않습니다.");
+			document.getElementById("pw").focus();
+		} else {
+			frm.submit();
+			alert("회원님의 정보가 수정되었습니다!");
+		}		
+	  
+}
+  $(document).ready(function(){
+		var page = $("input#page").val();
+	    loadPage(page);
 	   	showPagination();
 	 });
 	
@@ -301,15 +278,9 @@
 		var gender = frm.gender.value;
 		var neuter = frm.neuter.value;
 		var location = frm.location.value;
-		var kind = frm.kind.value;
-		$("input#kind").val(kind);
-		var age = frm.age.value;
-		$("input#age").val(age);
-		var marks = frm.marks.value;
-		$("input#marks").val(marks);
 		
 		frm.submit();
-		loadPage();
+		loadPage(page, gender, neuter, location);
 		showPagination();
 	}
 	
@@ -317,9 +288,6 @@
 	function showPagination(){
 		var html = "<ul>";
 		var curPage = parseInt($("input#page").val());
-		var gender = parseInt($("input#gender").val());
-		var neuter = parseInt($("input#neuter").val());
-		var location = parseInt($("input#location").val());
 		var calPage = parseInt((curPage-1) / 10); 
 		var pagesize = 0;
 		var total = ${total};
@@ -353,51 +321,35 @@
 		$("#dogNum.num").click(function(){   
 		   	curPage = parseInt($(this).text());
 			$("input#page").val(curPage);
-		   	loadPage();
+		   	loadPage(curPage);
 		   	showPagination();
 		});
 		
 		$("#dogNext.next").click(function(){
 			curPage = (calPage + 1) * 10 + 1;
 			$("input#page").val(curPage);
-			loadPage();
+			loadPage(curPage);
 			showPagination();
 		});
 		
 		$("#dogPrev.prev").click(function(){   
 			curPage = (calPage - 1) * 10 + 1;
 			$("input#page").val(curPage);
-			loadPage();
+			loadPage(curPage);
 			showPagination();
 		});
 	}
-	 function loadPage() {
-	  	var page = $("input#page").val();
-	  	var gender = $("input#gender").val();
-	 	var neuter = $("input#neuter").val();
-	  	var location = $("input#location").val();
-	  	var kind = $("input#kind").val();
-	  	var age = $("input#age").val();
-		var marks = $("input#marks").val();
-	  	var data = {page:page, gender:gender, neuter:neuter, location:location, kind:kind, age:age, marks:marks}
-	  	
+	 function loadPage(page) {
 	    $.ajax({
-	       url : "${pageContext.request.contextPath}/getDogList",
-	       type : "post",
-	       data : data,
+	       url : "${pageContext.request.contextPath}/getMyDogList?page=" + page + "&uid=" + ${loginVO.uid},
+	       type : "get",
 	       dataType: 'json',
 	       ontentType:  "application/json",
 	       mimeType: 'application/json',
 	       success : function(data, status) {
 	           if(status == "success") {
-	               
 	               if(updateList(data)) { // 페이지 업데이트
 	                  $("input#page").val(page);
-	                  $("input#gender").val(gender);
-	                  $("input#neuter").val(neuter);
-	                  $("input#location").val(location);
-	                  $("input#kind").val(kind);
-	                  $("input#age").val(age);
 	               }
 	           }
 	       },
@@ -417,7 +369,7 @@
 	       
 	       if(count == 0){
 	    	   result += '<div class="section-header">';
-	    	   result += '<h5>검색결과가 없습니다</h5>';
+	    	   result += '<h5>저장한 강아지가 없습니다</h5>';
 	    	   result += '</div>';
 	       }
 	       else{

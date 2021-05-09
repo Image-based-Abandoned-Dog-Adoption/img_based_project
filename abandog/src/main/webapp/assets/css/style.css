@@ -1827,3 +1827,16 @@ a .dog_img {
   background: #0a98c0;
   cursor: pointer;
 }
+
+#mark{
+	width: 200px;
+    padding: .8em .5em;
+    font-family: "Montserrat", sans-serif;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #999;
+    border-radius: 4px;
+    margin: 10px;
+    margin-right: 30px;
+}

@@ -61,7 +61,7 @@
 	          <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/logIn">Log In</a></li>  	
           	</c:when>
           	<c:otherwise>
-          	  <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/mypage">My Page</a></li>
+          	  <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/mypage?uid=${loginVO.uid}">My Page</a></li>
           	  <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/logout">Log Out</a></li>
           	</c:otherwise>
           </c:choose>
@@ -303,7 +303,6 @@
 		  
 		  var email = $("input#email").val();
 		  var data = {email:email}
-
 		  
 		  $.ajax({
 		       url : "${pageContext.request.contextPath}/checkEmailNum",

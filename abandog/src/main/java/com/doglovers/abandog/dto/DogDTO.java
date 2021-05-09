@@ -12,13 +12,14 @@ public class DogDTO {
 	private String sex;
 	private String neuter;
 	private int cid;
+	private String marks;
 	
 	public DogDTO() {
 		super();
 	}
-	
+
 	public DogDTO(String age, String careAddr, String careNm, String careTel, String color, String img, String kind,
-			String sex, String neuter, int cid) {
+			String sex, String neuter, int cid, String marks) {
 		super();
 		this.age = age;
 		this.careAddr = careAddr;
@@ -30,8 +31,9 @@ public class DogDTO {
 		this.sex = sex;
 		this.neuter = neuter;
 		this.cid = cid;
+		this.marks = marks;
 	}
-	
+
 	public String getAge() {
 		return age;
 	}
@@ -92,5 +94,11 @@ public class DogDTO {
 	public void setCid(int cid) {
 		this.cid = cid;
 	}
-	
+	public String getMarks() {
+		return marks;
+	}
+	public void setMarks(String marks) {
+		this.marks = marks;
+	}
+
 }
