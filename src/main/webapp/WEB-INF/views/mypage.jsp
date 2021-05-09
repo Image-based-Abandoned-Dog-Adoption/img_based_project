@@ -96,6 +96,10 @@
 	<!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">
       <div class="container" data-aos="fade-up">
+      	  <div class="section-header">
+          	<h3>${loginVO.name }님의 정보</h3>
+          </div>
+          <br><br>
         <div class="row">
         
         <div class="col-sm-4"></div>
