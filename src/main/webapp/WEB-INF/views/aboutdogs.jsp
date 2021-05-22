@@ -1,9 +1,9 @@
-<!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
@@ -72,131 +72,124 @@
     </div>
   </header><!-- End Header -->
 
-
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="clearfix" style="height:50vh">
       <div class="row justify-content-center align-self-center" data-aos="fade-up">
         <div class="col-lg-6 intro-info order-lg-first order-last" data-aos="zoom-in" data-aos-delay="100">
-          <h2>강아지 <span>정보</span></h2>
-          <h4>선택하신 강아지에 대한 정보입니다.</h4>
+          <h2>About <span>Abandoned</span> Dogs</h2>
+          <h4>유기견에 대해 궁금한 것들을 확인해 볼 수 있어요!</h4>
         </div>
       </div>
 
   </section><!-- End Hero -->
-  
+
   <main id="main">
   
-  <!-- ======= Why Us Section ======= -->
-    <section id="why-us" class="why-us">
-      <div class="container-fluid" data-aos="fade-up">
+  	<!-- ======= About Section ======= -->
+    <section id="about" class="about">
 
-<!--         <header class="section-header">
-          <h3>강아지</h3>
-        </header> -->
+      <div class="container" data-aos="fade-up">
+        <div class="row">
 
-        <div class="row" style="margin-top:50px">
-			
-		  <div class="col-lg-3">
-		  </div>
-		  
-          <div class="col-lg-3" data-aos="zoom-in" data-aos-delay="100">
-            <div class="why-us-img">
-              <img src="${dog.img }" class="img-fluid">
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+              <img src="assets/img/puppy.jpg" alt="">
             </div>
           </div>
-
-          <div class="col-lg-6">
-            <div class="why-us-content">
-
-              <div class="features clearfix" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-box-seam" style="color: #ffb774;"></i>
-                <h4>보호소 정보</h4>
-                <table style="margin-top:30px">
-                	<tr>
-                		<td><p><strong>보호소 이름</strong></p></td>
-                		<td><p>${dog.careNm}</p></td>
-                	</tr>
-                	<tr>
-                		<td><p><strong>보호소 전화번호</strong></p></td>
-                		<td><p>${dog.careTel}</p></td>
-                	</tr>
-                	<tr>
-                		<td><p><strong>보호소 주소</strong></p></td>
-                		<td><p>${dog.careAddr}</p></td>
-                	</tr>
-                </table>
-              </div>
-
-              <div class="features clearfix" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-card-checklist" style="color: #589af1;"></i>
-                <h4>강아지 정보</h4>
-                <table style="margin-top:30px">
-                	<tr>
-                		<td><p><strong>종</strong></p></td>
-                		<td><p>${dog.kind}</p></td>
-                	</tr>
-                	<tr>
-                		<td><p><strong>색깔</strong></p></td>
-                		<td><p>${dog.color}</p></td>
-                	</tr>
-                	<tr>
-                		<td><p><strong>출생년도</strong></p></td>
-                		<td><p>${dog.age}</p></td>
-                	</tr>
-                	<tr>
-                		<td><p><strong>성별</strong></p></td>
-                		<c:choose>
-		                	<c:when test="${dog.sex == 'F'}">
-		                		<td><p>암컷</p></td>
-		                	</c:when>
-		                	<c:when test="${dog.sex == 'M'}">
-		                		<td><p>수컷</p></td>
-		                	</c:when>
-		                	<c:otherwise>
-		                		<td><p>성별 미상</p></td>
-		                	</c:otherwise>
-		                </c:choose>
-                	</tr>
-                	<tr>
-                		<td><p><strong>중성화여부</strong></p></td>
-                		<c:choose>
-		                	<c:when test="${dog.neuter == 'Y'}">
-		                		<td><p>O</p></td>
-		                	</c:when>
-		                	<c:when test="${dog.neuter == 'N'}">
-		                		<td><p>X</p></td>
-		                	</c:when>
-		                	<c:otherwise>
-		                		<td><p>중성화여부 미상</p></td>
-		                	</c:otherwise>
-                		</c:choose>
-                	</tr>
-                	<c:choose>
-                		<c:when test="${dog.marks != null}">
-		                	<tr>
-		                		<td><p><strong>특징</strong></p></td>
-		                		<td><p>${dog.marks}</p></td>
-		                	</tr>
-		                </c:when>
-                	</c:choose>
-                </table>
-              </div>
-
-            </div>
-
+          
+          <div class="col-md-1">
           </div>
 
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+              <h2>유기견 입양을 해야하는 이유</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 다양한 종류의 강아지들 중에 선택할 수 있어요.</li>
+                <li><i class="bi bi-check-circle"></i> 희귀한 유전자를 가진 특별한 강아지를 입양할 수 있어요.</li>
+                <li><i class="bi bi-check-circle"></i> 보호소에 가장 많은 종인 믹스견은 순종보다 유전질환이 적어요.</li>
+                <li><i class="bi bi-check-circle"></i> 돈을 절약할 수 있어요.</li>
+                <li><i class="bi bi-check-circle"></i> 의료서비스를 지원받을 수 있어요. (중성화, 예방접종, 건강검사 등)</li>
+                <li><i class="bi bi-check-circle"></i> 이미 훈련받은 강아지를 선택할 수 있어요.</li>
+                <li><i class="bi bi-check-circle"></i> 펫샵에서 강아지를 구입하는 것은 강아지 공장을 지원하는 일이에요.</li>
+                <li><i class="bi bi-check-circle"></i> 생명을 구할 수 있어요.</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        
-        <div style="text-align: center; margin-top:70px;">
-	        <button id="btn2" type="button" onclick="history.back()">뒤로가기</button>
-	        <button id="btn2" type="button" onclick="saveDog()">저장하기</button>
-        </div>
-
       </div>
 
-    </section><!-- End Why Us Section -->
+    </section><!-- End About Section -->
+    
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
 
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-right" data-aos-delay="100">
+              <h2>유기견 입양을 하기 전에 생각해 볼 것들</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 모든 가족 구성원과 합의가 되어있나요?</li>
+                <li><i class="bi bi-check-circle"></i> 반려견은 10~15년 이상, 길면 20년 이상 삽니다. 결혼, 임신, 유학, 이사 등으로 가정환경이 바뀌어도 끝까지 책임지고 보살필 수 있나요?</li>
+                <li><i class="bi bi-check-circle"></i> 먹이, 관리, 치료, 중성화 시술, 훈련 등에 들어가는 경제적 부담을 짊어질 의사와 능력이 있나요?</li>
+                <li><i class="bi bi-check-circle"></i> 반려동물을 위해 충분히 ‘공부’할 각오가 되어 있나요?</li>
+                <li><i class="bi bi-check-circle"></i> 입양한 동물이 새로운 환경에 적응하기까지 인내심을 갖고 사랑으로 돌봐줄 수 있나요?</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="col-md-1">
+          </div>
+          
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-left" data-aos-delay="100">
+              <img src="assets/img/dogs.jpg" alt="">
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+    
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+              <img src="assets/img/dogs2.jpg" alt="">
+            </div>
+          </div>
+          
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+              <h2>위의 질문들에 모두 예라고 대답했다면, 유기견을 입양해보세요.</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 보호소의 정확한 위치와 연락처를 확인하여 미리 문의하세요.</li>
+                <li><i class="bi bi-check-circle"></i> 담당자 안내에 따라 사전 질문지나 양식에 답변을 작성하여 보내세요.</li>
+                <li><i class="bi bi-check-circle"></i> 약속한 시간에 신청자가 직접 보호소에 방문하여 상담하고 입양 계약서를 작성하세요.</li>
+                <li><i class="bi bi-check-circle"></i> 데려간 유기견을 끝까지 책임지고 보살필 수 있는지 확인하기 위해 심층면접을 거치는 곳도 있습니다.</li>
+                <li><i class="bi bi-check-circle"></i> 입양 신청자 본인이 직접 방문해야 해요. (대리인 방문 불가)</li>
+                <li><i class="bi bi-check-circle"></i> 입양 신청자와 함께 거주하는 모든 가족 구성원의 동의가 확인된 후에 입양이 가능해요.</li>
+                <li><i class="bi bi-check-circle"></i> 미성년자는 보호자의 동의 및 인터뷰 절차 후 입양할 수 있어요.</li>
+                <li><i class="bi bi-check-circle"></i> 집이 종일 비어 있어 입양동물을 돌봐줄 사람이 없으면 신청자에서 제외됩니다.</li>
+                <li><i class="bi bi-check-circle"></i> 입양자의 주소(실거주지)나 연락처가 변경되었을 시 반드시 보호소에 통보해야 합니다.</li>
+                <li><i class="bi bi-check-circle"></i> 입양된 동물은 양도, 판매, 학대, 유기할 수 없어요.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+    
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -279,45 +272,5 @@
 
   <!-- Template Main JS File -->
   <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-  
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-  
-  <script>
-	function saveDog(){
-		
-	 	var loginVO = '${loginVO}';
-	 	
-		if(loginVO == null || loginVO == ''){
-			alert("로그인이 필요합니다.");
-			location.href='logIn';		
-		}else{
-			 var cid = '${dog.cid}';
-			 var uid = '${loginVO.uid}';
-			 var data = {cid:cid, uid:uid}
-			 
-			 $.ajax({
-			      url : "${pageContext.request.contextPath}/saveDog",
-			      type : "post",
-			      data : data,
-			      success : function(result) {
-			          if(result == "duplicate"){
-			        	  alert("이미 저장되어 있는 강아지 입니다.");
-			          } else if(result == "fail") {
-			              alert("저장에 실패했습니다. 다시 시도해주세요.");
-			          } else {
-			       	   	  alert("저장완료! 마이페이지에서 저장한 강아지를 확인해보세요.");
-			          }
-			      },
-			      error: function(data, status, er) {
-			    	  alert("오류가 발생했습니다. 관리자에게 문의 바랍니다.");
-			      }
-			      
-			   });
-		}
-		 
-	}
-  </script>
-  
 </body>
 </html>

@@ -79,7 +79,7 @@
 							class="bi bi-chevron-down"></i></a>
 						<ul>
 							<li><a class="nav-link scrollto"
-								href="${pageContext.request.contextPath}/aboutus">About Us</a></li>
+								href="${pageContext.request.contextPath}/aboutus">About AbanDog</a></li>
 							<li><a class="nav-link scrollto"
 								href="${pageContext.request.contextPath}/aboutdogs">About
 									Abandoned dogs</a></li>

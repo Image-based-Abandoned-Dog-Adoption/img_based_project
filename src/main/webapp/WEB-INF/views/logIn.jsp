@@ -51,7 +51,7 @@
           </li>
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-	          <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/aboutus">About Us</a></li>
+	          <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/aboutus">About AbanDog</a></li>
 	          <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/aboutdogs">About Abandoned dogs</a></li>
 	          <li><a class="nav-link scrollto" href="#footer">Contact</a></li>
             </ul>
@@ -358,7 +358,7 @@
 		           }
 		       },
 		       error: function(data, status, er) {
-		    	   alert("오류가 발생했습니다. 다시 시도해주세요.");
+		    	   alert("오류가 발생했습니다. 관리자에게 문의 바랍니다.");
 		       }
 		       
 		    });

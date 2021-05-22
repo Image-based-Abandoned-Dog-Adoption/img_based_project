@@ -1,9 +1,9 @@
-<!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
@@ -72,130 +72,198 @@
     </div>
   </header><!-- End Header -->
 
-
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="clearfix" style="height:50vh">
       <div class="row justify-content-center align-self-center" data-aos="fade-up">
         <div class="col-lg-6 intro-info order-lg-first order-last" data-aos="zoom-in" data-aos-delay="100">
-          <h2>강아지 <span>정보</span></h2>
-          <h4>선택하신 강아지에 대한 정보입니다.</h4>
+          <h2>About <span>AbanDog</span></h2>
+          <h4>Abandog 웹사이트에 대한 설명을 볼 수 있어요!</h4>
         </div>
       </div>
 
   </section><!-- End Hero -->
-  
+
   <main id="main">
   
-  <!-- ======= Why Us Section ======= -->
-    <section id="why-us" class="why-us">
-      <div class="container-fluid" data-aos="fade-up">
+  	<!-- ======= About Section ======= -->
+    <section id="about" class="about">
 
-<!--         <header class="section-header">
-          <h3>강아지</h3>
-        </header> -->
+      <div class="container" data-aos="fade-up">
+        <div class="row">
 
-        <div class="row" style="margin-top:50px">
-			
-		  <div class="col-lg-3">
-		  </div>
-		  
-          <div class="col-lg-3" data-aos="zoom-in" data-aos-delay="100">
-            <div class="why-us-img">
-              <img src="${dog.img }" class="img-fluid">
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+              <img src="assets/img/searchdogsbyimage.JPG" alt="">
             </div>
           </div>
-
-          <div class="col-lg-6">
-            <div class="why-us-content">
-
-              <div class="features clearfix" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-box-seam" style="color: #ffb774;"></i>
-                <h4>보호소 정보</h4>
-                <table style="margin-top:30px">
-                	<tr>
-                		<td><p><strong>보호소 이름</strong></p></td>
-                		<td><p>${dog.careNm}</p></td>
-                	</tr>
-                	<tr>
-                		<td><p><strong>보호소 전화번호</strong></p></td>
-                		<td><p>${dog.careTel}</p></td>
-                	</tr>
-                	<tr>
-                		<td><p><strong>보호소 주소</strong></p></td>
-                		<td><p>${dog.careAddr}</p></td>
-                	</tr>
-                </table>
-              </div>
-
-              <div class="features clearfix" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-card-checklist" style="color: #589af1;"></i>
-                <h4>강아지 정보</h4>
-                <table style="margin-top:30px">
-                	<tr>
-                		<td><p><strong>종</strong></p></td>
-                		<td><p>${dog.kind}</p></td>
-                	</tr>
-                	<tr>
-                		<td><p><strong>색깔</strong></p></td>
-                		<td><p>${dog.color}</p></td>
-                	</tr>
-                	<tr>
-                		<td><p><strong>출생년도</strong></p></td>
-                		<td><p>${dog.age}</p></td>
-                	</tr>
-                	<tr>
-                		<td><p><strong>성별</strong></p></td>
-                		<c:choose>
-		                	<c:when test="${dog.sex == 'F'}">
-		                		<td><p>암컷</p></td>
-		                	</c:when>
-		                	<c:when test="${dog.sex == 'M'}">
-		                		<td><p>수컷</p></td>
-		                	</c:when>
-		                	<c:otherwise>
-		                		<td><p>성별 미상</p></td>
-		                	</c:otherwise>
-		                </c:choose>
-                	</tr>
-                	<tr>
-                		<td><p><strong>중성화여부</strong></p></td>
-                		<c:choose>
-		                	<c:when test="${dog.neuter == 'Y'}">
-		                		<td><p>O</p></td>
-		                	</c:when>
-		                	<c:when test="${dog.neuter == 'N'}">
-		                		<td><p>X</p></td>
-		                	</c:when>
-		                	<c:otherwise>
-		                		<td><p>중성화여부 미상</p></td>
-		                	</c:otherwise>
-                		</c:choose>
-                	</tr>
-                	<c:choose>
-                		<c:when test="${dog.marks != null}">
-		                	<tr>
-		                		<td><p><strong>특징</strong></p></td>
-		                		<td><p>${dog.marks}</p></td>
-		                	</tr>
-		                </c:when>
-                	</c:choose>
-                </table>
-              </div>
-
-            </div>
-
+          
+          <div class="col-md-1">
           </div>
 
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+              <h2>이미지로 강아지 검색하기</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 원하는 강아지의 상이 있나요? 비슷하게 생긴 강아지들을 검색해볼 수 있어요!</li>
+                <li><i class="bi bi-check-circle"></i> 원하는 이미지를 삽입하면 가장 비슷한 강아지들을 찾아볼 수 있습니다.</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        
-        <div style="text-align: center; margin-top:70px;">
-	        <button id="btn2" type="button" onclick="history.back()">뒤로가기</button>
-	        <button id="btn2" type="button" onclick="saveDog()">저장하기</button>
-        </div>
-
       </div>
 
-    </section><!-- End Why Us Section -->
+    </section><!-- End About Section -->
+	
+	<!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-right" data-aos-delay="100">
+              <h2>카테고리별로 강아지 검색하기</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 카테고리별로 강아지를 검색해볼 수 있어요! (성별, 중성화여부, 보호소위치 등)</li>
+                <li><i class="bi bi-check-circle"></i> 단, 중성화된 강아지들의 수는 적다는 것에 유의하세요. 검색결과가 나오지 않을 수 있습니다.</li>
+                <li><i class="bi bi-check-circle"></i> 특징을 순, 또는 온순으로 검색하면 순한 강아지들을 찾아볼 수 있어요.</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="col-md-1">
+          </div>
+          
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-left" data-aos-delay="100">
+              <img src="assets/img/searchdogsbycategory.JPG" alt="">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+    
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+              <img src="assets/img/searchdog.jpg" alt="">
+            </div>
+          </div>
+          
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+              <h2>강아지 정보 확인하기</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 검색한 강아지 중 정보를 확인해보고 싶은 강아지가 있다면 클릭해보세요!</li>
+                <li><i class="bi bi-check-circle"></i> 강아지에 대한 상세정보를 확인해 볼 수 있어요.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+    
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-right" data-aos-delay="100">
+              <h2>강아지 정보 확인하기</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 이렇게 강아지에 대한 상세정보를 확인할 수 있습니다.</li>
+                <li><i class="bi bi-check-circle"></i> 입양하고 싶다면 해당 보호소로 전화해보세요!</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="col-md-1">
+          </div>
+          
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-left" data-aos-delay="100">
+              <img src="assets/img/doginfo.jpg" alt="">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+    
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+              <img src="assets/img/savedog.jpg" alt="">
+            </div>
+          </div>
+          
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+              <h2>강아지 저장하기</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 검색한 강아지 중 마음에 드는 강아지가 있다면 저장해보세요!</li>
+                <li><i class="bi bi-check-circle"></i> 마이페이지에서 저장한 강아지들을 확인해볼 수 있어요.</li>
+                <li><i class="bi bi-check-circle"></i> 이 서비스는 로그인이 필요한 서비스예요.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+    
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-right" data-aos-delay="100">
+              <h2>유기견 입양에 대한 정보 확인하기</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 유기견을 입양해야 되는 이유</li>
+                <li><i class="bi bi-check-circle"></i> 유기견을 입양하기 전에 고려해야 되는 것들</li>
+                <li><i class="bi bi-check-circle"></i> 유기견을 입양하는 절차와 유의사항 등을 확인해 볼 수 있어요!</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="col-md-1">
+          </div>
+          
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-left" data-aos-delay="100">
+              <img src="assets/img/aboutdogs.jpg" alt="">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
 
   </main><!-- End #main -->
 
@@ -279,45 +347,5 @@
 
   <!-- Template Main JS File -->
   <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-  
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-  
-  <script>
-	function saveDog(){
-		
-	 	var loginVO = '${loginVO}';
-	 	
-		if(loginVO == null || loginVO == ''){
-			alert("로그인이 필요합니다.");
-			location.href='logIn';		
-		}else{
-			 var cid = '${dog.cid}';
-			 var uid = '${loginVO.uid}';
-			 var data = {cid:cid, uid:uid}
-			 
-			 $.ajax({
-			      url : "${pageContext.request.contextPath}/saveDog",
-			      type : "post",
-			      data : data,
-			      success : function(result) {
-			          if(result == "duplicate"){
-			        	  alert("이미 저장되어 있는 강아지 입니다.");
-			          } else if(result == "fail") {
-			              alert("저장에 실패했습니다. 다시 시도해주세요.");
-			          } else {
-			       	   	  alert("저장완료! 마이페이지에서 저장한 강아지를 확인해보세요.");
-			          }
-			      },
-			      error: function(data, status, er) {
-			    	  alert("오류가 발생했습니다. 관리자에게 문의 바랍니다.");
-			      }
-			      
-			   });
-		}
-		 
-	}
-  </script>
-  
 </body>
 </html>
