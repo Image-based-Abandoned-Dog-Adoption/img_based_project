@@ -43,23 +43,12 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="${pageContext.request.contextPath}/main">Home</a></li>
-          <c:choose>
-          	<c:when test="${loginVO == null}">
-              <li class="dropdown"><a href="#"><span>Search Dogs</span> <i class="bi bi-chevron-down"></i></a>
-                <ul>
-                  <li><a href="${pageContext.request.contextPath}/searchbycategory">Search Dogs by category</a></li>
-                </ul>
-              </li>
-          	</c:when>
-          	<c:otherwise>
-              <li class="dropdown"><a href="#"><span>Search Dogs</span> <i class="bi bi-chevron-down"></i></a>
-                <ul>
-                  <li><a href="${pageContext.request.contextPath}/searchbyimage">Search Dogs by image</a></li>
-                  <li><a href="${pageContext.request.contextPath}/searchbycategory">Search Dogs by category</a></li>
-                </ul>
-              </li>
-            </c:otherwise>
-          </c:choose>
+            <li class="dropdown"><a href="#"><span>Search Dogs</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="${pageContext.request.contextPath}/searchbyimage">Search Dogs by image</a></li>
+                <li><a href="${pageContext.request.contextPath}/searchbycategory">Search Dogs by category</a></li>
+              </ul>
+            </li>
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
 	          <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/aboutus">About AbanDog</a></li>
@@ -345,6 +334,7 @@
 		           }
 		       },
 		       error: function(data, status, er) {
+		    	   console.log(er);
 		           alert("인증번호 발송에 실패하였습니다. 이메일을 다시 확인해주세요.");
 		       }
 		       

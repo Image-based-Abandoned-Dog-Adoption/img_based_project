@@ -38,6 +38,24 @@ import com.doglovers.abandog.dto.Result;
 @Controller
 @RequestMapping("/")
 public class DogImgController {
+	
+	public static String getRandomStr(int size) {
+		if (size > 0) {
+			char[] tmp = new char[size];
+			for (int i = 0; i < tmp.length; i++) {
+				int div = (int) Math.floor(Math.random() * 2);
+
+				if (div == 0) { // 0이면 숫자로
+					tmp[i] = (char) (Math.random() * 10 + '0');
+				} else { // 1이면 알파벳
+					tmp[i] = (char) (Math.random() * 26 + 'A');
+				}
+			}
+			return new String(tmp);
+		}
+		return "ERROR : Size is required.";
+	}
+	
 
 	@RequestMapping("/searchbyimage")
 	public String searchbyimage(Model model) {
@@ -76,9 +94,7 @@ public class DogImgController {
 			path = "/home/wndvlf96/imgs/";
 			folder_dir = "/home/wndvlf96/imgs";
 		}
-		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		HttpSession session = httpRequest.getSession();
-		String ids = session.getId();
+		String ids = getRandomStr(6);
 		String fileNewName = ids+imgId + "." + ext; // 새로운 파일 네임 지정
 		uploadPath = path + fileNewName;
 		System.out.println(uploadPath);

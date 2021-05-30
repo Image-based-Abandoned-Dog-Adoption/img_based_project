@@ -1,5 +1,7 @@
 package com.doglovers.abandog.controller;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -192,32 +194,67 @@ public class UserManageController {
 			PasswordEncoding pe = new PasswordEncoding();
 			userVO.setPw(pe.encode(new_pw));
 			UserManageDAO.updtMember(userVO);
-			// 이메일 보내기
+			if (request.getRequestURL().indexOf("localhost") > 0) {
+				// 이메일 보내기
 
-			final String SMTP_USERNAME = "slavh96@naver.com";
-			final String SMTP_PASSWORD = "eu9578";
-			String HOST = "smtp.naver.com";
+				final String SMTP_USERNAME = "slavh96@naver.com";
+				final String SMTP_PASSWORD = "eu9578";
+				String HOST = "smtp.naver.com";
 
-			Properties props = new Properties();
-			props.put("mail.smtp.host", HOST);
-			props.put("mail.smtp.auth", "true");
+				Properties props = new Properties();
+				props.put("mail.smtp.host", HOST);
+				props.put("mail.smtp.auth", "true");
 
-			Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication(SMTP_USERNAME, SMTP_PASSWORD);
+				Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication(SMTP_USERNAME, SMTP_PASSWORD);
+					}
+				});
+				System.out.println(userVO.getEmail());
+				String TO = userVO.getEmail();
+				MimeMessage message = new MimeMessage(session);
+	            message.setFrom(new InternetAddress(SMTP_USERNAME));
+	            message.addRecipient(Message.RecipientType.TO, new InternetAddress(TO));
+	            message.setSubject("Abandog  " + userVO.getName() + " 회원님 비밀번호 찾기 메일입니다.");
+	            message.setText("임시 비밀번호는 " + new_pw + " 입니다.");
+	            Transport.send(message);
+	            
+	            return "success";
+				
+			}
+			else {
+				// sh /home/wndvlf96/mailtest.sh c1 t1 slavh96@naver.com
+				
+				
+				String TO = userVO.getEmail();
+				String cont = "Abandog_temp_password:" + new_pw;
+				String[] cmd3 = new String[5];
+				cmd3[0] = "sh";
+				cmd3[1] = "/home/wndvlf96/mailtest.sh";
+				cmd3[2] = cont;
+				cmd3[3] = "Abandog_temp_password";
+				cmd3[4] = TO;
+				String cmd = "";
+				for (int j = 0; j<5; j++) {
+					cmd += cmd3[j];
+					cmd += " ";
 				}
-			});
-			System.out.println(userVO.getEmail());
-			String TO = userVO.getEmail();
-			MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(SMTP_USERNAME));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(TO));
-            message.setSubject("Abandog  " + userVO.getName() + " 회원님 비밀번호 찾기 메일입니다.");
-            message.setText("임시 비밀번호는 " + new_pw + " 입니다.");
-            Transport.send(message);
-            
-            return "success";
-
+				System.out.println(cmd);
+				int idx = 0;
+				Process p3 = Runtime.getRuntime().exec(cmd);
+				BufferedReader br3 = new BufferedReader(new InputStreamReader(p3.getInputStream(), "EUC-KR"));
+				String line3 = null;
+				
+				/*
+				while ((line3 = br3.readLine()) != null) {
+					System.out.println(idx + ": " + line3);
+					idx++;
+				}
+				*/
+				System.out.println("---------------------------------------");
+				
+				return "success";
+			}
 		} else {
 			// 해당 정보에 부합하는 회원정보 없음!
 			return "fail";
@@ -237,34 +274,77 @@ public class UserManageController {
 	          int selectRandomPw = (int)(Math.random()*(pwCollection.length));
 	          ranNum += pwCollection[selectRandomPw];
 	        }
+	        if (request.getRequestURL().indexOf("localhost") > 0) {
+				// 개발서버
+	        	// 이메일 보내기
+		        try {
+		        	final String SMTP_USERNAME = "slavh96@naver.com";
+					final String SMTP_PASSWORD = "eu9578";
+					String HOST = "smtp.naver.com";
 
-			// 이메일 보내기
-	        try {
-	        	final String SMTP_USERNAME = "slavh96@naver.com";
-				final String SMTP_PASSWORD = "eu9578";
-				String HOST = "smtp.naver.com";
+					Properties props = new Properties();
+					props.put("mail.smtp.host", HOST);
+					props.put("mail.smtp.auth", "true");
 
-				Properties props = new Properties();
-				props.put("mail.smtp.host", HOST);
-				props.put("mail.smtp.auth", "true");
+					Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+						protected PasswordAuthentication getPasswordAuthentication() {
+							return new PasswordAuthentication(SMTP_USERNAME, SMTP_PASSWORD);
+						}
+					});
 
-				Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(SMTP_USERNAME, SMTP_PASSWORD);
+					String TO = userVO.getEmail();
+					MimeMessage message = new MimeMessage(session);
+		            message.setFrom(new InternetAddress(SMTP_USERNAME));
+		            message.addRecipient(Message.RecipientType.TO, new InternetAddress(TO));
+		            message.setSubject("이메일 인증번호 메일입니다.");
+		            message.setText("인증번호는 " + ranNum + " 입니다. ");
+		            Transport.send(message);
+		            
+		            return ranNum;
+				} catch (Exception e) {
+					System.out.println(e);
+					return "fail";
+				}
+	        	
+			} else {
+				// 실서버
+				// 이메일 보내기
+				try {
+					// sh /home/wndvlf96/mailtest.sh c1 t1 slavh96@naver.com
+					
+					String TO = userVO.getEmail();
+					String cont = "Abandog_email_certification_number:" + ranNum;
+					String[] cmd3 = new String[5];
+					cmd3[0] = "sh";
+					cmd3[1] = "/home/wndvlf96/mailtest.sh";
+					cmd3[2] = cont;
+					cmd3[3] = "Abandog_email_certification_number";
+					cmd3[4] = TO;
+					String cmd = "";
+					for (int j = 0; j<5; j++) {
+						cmd += cmd3[j];
+						cmd += " ";
 					}
-				});
-
-				String TO = userVO.getEmail();
-				MimeMessage message = new MimeMessage(session);
-	            message.setFrom(new InternetAddress(SMTP_USERNAME));
-	            message.addRecipient(Message.RecipientType.TO, new InternetAddress(TO));
-	            message.setSubject("이메일 인증번호 메일입니다.");
-	            message.setText("인증번호는 " + ranNum + " 입니다. ");
-	            Transport.send(message);
-	            
-	            return ranNum;
-			} catch (Exception e) {
-				return "fail";
+					System.out.println(cmd);
+					int idx = 0;
+					Process p3 = Runtime.getRuntime().exec(cmd);
+					BufferedReader br3 = new BufferedReader(new InputStreamReader(p3.getInputStream(), "EUC-KR"));
+					String line3 = null;
+					
+					/*
+					while ((line3 = br3.readLine()) != null) {
+						System.out.println(idx + ": " + line3);
+						idx++;
+					}
+					*/
+					System.out.println("---------------------------------------");
+					
+					return ranNum;
+				} catch (Exception e) {
+					System.out.println(e);
+					return "fail";
+				}
+				
 			}
 	}
 	
