@@ -1,9 +1,9 @@
-<!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
@@ -83,135 +83,124 @@
     </div>
   </header><!-- End Header -->
 
-
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="clearfix" style="height:50vh">
       <div class="row justify-content-center align-self-center" data-aos="fade-up">
         <div class="col-lg-6 intro-info order-lg-first order-last" data-aos="zoom-in" data-aos-delay="100">
-          <h2><span>로그인</span></h2>
-          <h4>로그인 후 저장한 강아지들을 살펴보세요!</h4>
+          <h2>About <span>Abandoned</span> Dogs</h2>
+          <h4>유기견에 대해 궁금한 것들을 확인해 볼 수 있어요!</h4>
         </div>
       </div>
 
   </section><!-- End Hero -->
-  
+
   <main id="main">
-       
-    <!-- ======= Team Section ======= -->
-    <section id="team" class="team section-bg">
-      <div class="container" data-aos="fade-up">
-        <div class="row">
-        
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-	        <div class="form">
-	
-	           <form name="joinfrm" method="post" role="form" class="php-email-form">
-	             <div class="form-group">
-	               <input type="text" name="id" class="form-control" id="id" placeholder="아이디" required="">
-	             </div>
-	             <div class="form-group mt-3">
-	               <input type="password" class="form-control" name="pw" id="pw" placeholder="비밀번호" required="">
-	             </div>
-	
-	             <div class="my-3">
 
-	             </div>
-	
-	             <div class="text-center"><button type="button" onclick="checkLogin()">Log In</button></div>
-	           </form>
-	
-	         </div>
-         </div>
-         
-         <div class="col-sm-4"></div>
-
-        </div>
-
-      </div>
-    </section><!-- End Team Section -->
-	    
+  	<!-- ======= About Section ======= -->
     <section id="about" class="about">
-    	      
+
       <div class="container" data-aos="fade-up">
         <div class="row">
 
-          <div class="col-sm-4">
-            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
-              <h5>아이디를 잊으셨나요?</h5>
-              
-              <form name="findidfrm" method="post" role="form" class="php-email-form">
-              	<div class="row">
-					<div class="col-sm-9">
-		             <div class="form-group">
-		               <input type="text" name="name" class="form-control" id="name" placeholder="이름" required="">
-		             </div>
-
-		             <div class="form-group mt-3">
-		               <input type="text" name="email" class="form-control" id="email" placeholder="이메일" required="">
-		             </div>
-	
-		             <div class="my-3">
-	
-		             </div>
-	             
-
-	             	<div class="text-center"><button id="btn3" type="button" onclick="findID()">Find ID</button></div>
-				
-					</div>
-				
-				</div>	           
-	           </form>
-
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+              <img src="assets/img/puppy.jpg" alt="">
             </div>
           </div>
-          
-           <div class="col-sm-4">
+
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-lg-6 col-md-6">
             <div class="about-content" data-aos="fade-left" data-aos-delay="100">
-              <h5>비밀번호를 잊으셨나요?</h5>
-              
-              <form name="findpwfrm" method="post" role="form" class="php-email-form">
-                <div class="row">
-					<div class="col-sm-9">
-		             <div class="form-group">
-		               <input type="text" name="name" class="form-control" id="name2" placeholder="이름" required="">
-		             </div>
-		            
-		             <div class="form-group mt-3">
-		               <input type="text" name="email" class="form-control" id="email2" placeholder="이메일" required="">
-		             </div>
-		             <div class="form-group mt-3">
-		               <input type="text" name="id" class="form-control" id="id2" placeholder="아이디" required="">
-		             </div>
-	
-	             <div class="my-3">
-
-	             </div>
-	
-	             <div class="text-center"><button id="btn3" type="button" onclick="findPW()">Find PW</button></div>
-	           	
-	           	</div>
-	           	</div>
-	           </form>
-
+              <h2>유기견 입양을 해야하는 이유</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 다양한 종류의 강아지들 중에 선택할 수 있어요.</li>
+                <li><i class="bi bi-check-circle"></i> 희귀한 유전자를 가진 특별한 강아지를 입양할 수 있어요.</li>
+                <li><i class="bi bi-check-circle"></i> 보호소에 가장 많은 종인 믹스견은 순종보다 유전질환이 적어요.</li>
+                <li><i class="bi bi-check-circle"></i> 돈을 절약할 수 있어요.</li>
+                <li><i class="bi bi-check-circle"></i> 의료서비스를 지원받을 수 있어요. (중성화, 예방접종, 건강검사 등)</li>
+                <li><i class="bi bi-check-circle"></i> 이미 훈련받은 강아지를 선택할 수 있어요.</li>
+                <li><i class="bi bi-check-circle"></i> 펫샵에서 강아지를 구입하는 것은 강아지 공장을 지원하는 일이에요.</li>
+                <li><i class="bi bi-check-circle"></i> 생명을 구할 수 있어요.</li>
+              </ul>
             </div>
           </div>
-          
-          <div class="col-sm-4">
-            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
-              <h5>아직 AbanDog의 회원이 아니신가요?</h5>
-              <h6>회원가입하여 AbanDog의 서비스를 즐겨보세요!</h6>
-              
-              <div class="text-center"><button id="btn3" type="button" onclick="location.href='join'">Join Us</button></div>
-
-            </div>
-          </div>
-          
         </div>
       </div>
-    
-    </section>
-	
+
+    </section><!-- End About Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-right" data-aos-delay="100">
+              <h2>유기견 입양을 하기 전에 생각해 볼 것들</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 모든 가족 구성원과 합의가 되어있나요?</li>
+                <li><i class="bi bi-check-circle"></i> 반려견은 10~15년 이상, 길면 20년 이상 삽니다. 결혼, 임신, 유학, 이사 등으로 가정환경이 바뀌어도 끝까지 책임지고 보살필 수 있나요?</li>
+                <li><i class="bi bi-check-circle"></i> 먹이, 관리, 치료, 중성화 시술, 훈련 등에 들어가는 경제적 부담을 짊어질 의사와 능력이 있나요?</li>
+                <li><i class="bi bi-check-circle"></i> 반려동물을 위해 충분히 ‘공부’할 각오가 되어 있나요?</li>
+                <li><i class="bi bi-check-circle"></i> 입양한 동물이 새로운 환경에 적응하기까지 인내심을 갖고 사랑으로 돌봐줄 수 있나요?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-left" data-aos-delay="100">
+              <img src="assets/img/dogs.jpg" alt="">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+              <img src="assets/img/dogs2.jpg" alt="">
+            </div>
+          </div>
+
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+              <h2>위의 질문들에 모두 예라고 대답했다면, 유기견을 입양해보세요.</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 보호소의 정확한 위치와 연락처를 확인하여 미리 문의하세요.</li>
+                <li><i class="bi bi-check-circle"></i> 담당자 안내에 따라 사전 질문지나 양식에 답변을 작성하여 보내세요.</li>
+                <li><i class="bi bi-check-circle"></i> 약속한 시간에 신청자가 직접 보호소에 방문하여 상담하고 입양 계약서를 작성하세요.</li>
+                <li><i class="bi bi-check-circle"></i> 데려간 유기견을 끝까지 책임지고 보살필 수 있는지 확인하기 위해 심층면접을 거치는 곳도 있습니다.</li>
+                <li><i class="bi bi-check-circle"></i> 입양 신청자 본인이 직접 방문해야 해요. (대리인 방문 불가)</li>
+                <li><i class="bi bi-check-circle"></i> 입양 신청자와 함께 거주하는 모든 가족 구성원의 동의가 확인된 후에 입양이 가능해요.</li>
+                <li><i class="bi bi-check-circle"></i> 미성년자는 보호자의 동의 및 인터뷰 절차 후 입양할 수 있어요.</li>
+                <li><i class="bi bi-check-circle"></i> 집이 종일 비어 있어 입양동물을 돌봐줄 사람이 없으면 신청자에서 제외됩니다.</li>
+                <li><i class="bi bi-check-circle"></i> 입양자의 주소(실거주지)나 연락처가 변경되었을 시 반드시 보호소에 통보해야 합니다.</li>
+                <li><i class="bi bi-check-circle"></i> 입양된 동물은 양도, 판매, 학대, 유기할 수 없어요.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -226,7 +215,7 @@
 			  <div class="col-sm-4">
 			    <img src="assets/img/logo.png">
 			  </div>
-			  
+
               <div class="col-sm-4">
                 <div class="footer-info">
                   <h3>AbanDog</h3>
@@ -245,17 +234,17 @@
                     <strong>Email:</strong> b2nyb2st77@gmail.com<br>
                   </p>
                 </div>
-                
+
                 <div class="social-links">
                   <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                   <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                   <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
                   <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
                 </div>
-                
+
                </div>
 
-			   
+
 
               </div>
 
@@ -288,95 +277,11 @@
   <script src="${pageContext.request.contextPath}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="${pageContext.request.contextPath}/assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="${pageContext.request.contextPath}/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/vendor/php-email-form/validate.js"></script>
   <script src="${pageContext.request.contextPath}/assets/vendor/purecounter/purecounter.js"></script>
   <script src="${pageContext.request.contextPath}/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-  
-  <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.10.0.min.js"></script>
-  <script src="${pageContext.request.contextPath}/assets/js/jquery-1.7.1.min.js" type="text/javascript"></script>
-  
-  <script>
-	  function checkLogin(){
-		  
-		  var id = $("input#id").val();
-		  var pw = $("input#pw").val();
-		  var data = {id:id, pw:pw}
-		  
-		  $.ajax({
-		       url : "${pageContext.request.contextPath}/login",
-		       type : "post",
-		       data : data,
-		       success : function(result) {
-		           if(result == 'fail') {
-		               alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
-		               document.getElementById("id").focus();
-		           } else {
-		        	   alert("Abandog에 오신 것을 환영합니다!");
-		        	   location.href="main";
-		           }
-		       },
-		       error: function(data, status, er) {
-		    	   alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
-		       }
-		       
-		    });
-		  
-	  }
-	  
-	  function findID(){
-		  
-		  var name = $("input#name").val();
-		  var email = $("input#email").val();
-		  var data = {name:name, email:email}
-		  
-		  $.ajax({
-		       url : "${pageContext.request.contextPath}/selectId",
-		       type : "post",
-		       data : data,
-		       success : function(result) {
-		           if(result == "") {
-		               alert("가입하지 않은 아이디이거나, 정보가 일치하지 않습니다. 다시 시도해주세요.");
-		           } else {
-		        	   alert("회원님의 아이디는 " + result + "입니다.");
-		           }
-		       },
-		       error: function(data, status, er) {
-		    	   alert("가입하지 않은 아이디이거나, 정보가 일치하지 않습니다. 다시 시도해주세요.");
-		       }
-		       
-		    });
-		  
-	  }
-	  
-	  function findPW(){
-		  
-		  var name = $("input#name2").val();
-		  var email = $("input#email2").val();
-		  var id = $("input#id2").val();
-		  var data = {name:name, email:email, id:id}
-		  
-		  $.ajax({
-		       url : "${pageContext.request.contextPath}/selectPw",
-		       type : "post",
-		       data : data,
-		       success : function(result) {
-		           if(result == "fail") {
-		               alert("가입하지 않은 아이디이거나, 정보가 일치하지 않습니다. 다시 시도해주세요.");
-		           } else {
-		        	   alert("임시비밀번호를 발송했습니다. 로그인 후 비밀번호를 변경해주세요.");
-		           }
-		       },
-		       error: function(data, status, er) {
-		    	   alert("오류가 발생했습니다. 관리자에게 문의 바랍니다.");
-		       }
-		       
-		    });
-		  
-	  }
-  
-  </script>
-  
 </body>
 </html>

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
@@ -83,135 +83,199 @@
     </div>
   </header><!-- End Header -->
 
-
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="clearfix" style="height:50vh">
       <div class="row justify-content-center align-self-center" data-aos="fade-up">
         <div class="col-lg-6 intro-info order-lg-first order-last" data-aos="zoom-in" data-aos-delay="100">
-          <h2><span>로그인</span></h2>
-          <h4>로그인 후 저장한 강아지들을 살펴보세요!</h4>
+          <h2>About <span>AbanDog</span></h2>
+          <h4>Abandog 웹사이트에 대한 설명을 볼 수 있어요!</h4>
         </div>
       </div>
 
   </section><!-- End Hero -->
-  
+
   <main id="main">
-       
-    <!-- ======= Team Section ======= -->
-    <section id="team" class="team section-bg">
-      <div class="container" data-aos="fade-up">
-        <div class="row">
-        
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-	        <div class="form">
-	
-	           <form name="joinfrm" method="post" role="form" class="php-email-form">
-	             <div class="form-group">
-	               <input type="text" name="id" class="form-control" id="id" placeholder="아이디" required="">
-	             </div>
-	             <div class="form-group mt-3">
-	               <input type="password" class="form-control" name="pw" id="pw" placeholder="비밀번호" required="">
-	             </div>
-	
-	             <div class="my-3">
 
-	             </div>
-	
-	             <div class="text-center"><button type="button" onclick="checkLogin()">Log In</button></div>
-	           </form>
-	
-	         </div>
-         </div>
-         
-         <div class="col-sm-4"></div>
-
-        </div>
-
-      </div>
-    </section><!-- End Team Section -->
-	    
+  	<!-- ======= About Section ======= -->
     <section id="about" class="about">
-    	      
+
       <div class="container" data-aos="fade-up">
         <div class="row">
 
-          <div class="col-sm-4">
-            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
-              <h5>아이디를 잊으셨나요?</h5>
-              
-              <form name="findidfrm" method="post" role="form" class="php-email-form">
-              	<div class="row">
-					<div class="col-sm-9">
-		             <div class="form-group">
-		               <input type="text" name="name" class="form-control" id="name" placeholder="이름" required="">
-		             </div>
-
-		             <div class="form-group mt-3">
-		               <input type="text" name="email" class="form-control" id="email" placeholder="이메일" required="">
-		             </div>
-	
-		             <div class="my-3">
-	
-		             </div>
-	             
-
-	             	<div class="text-center"><button id="btn3" type="button" onclick="findID()">Find ID</button></div>
-				
-					</div>
-				
-				</div>	           
-	           </form>
-
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+              <img src="assets/img/searchdogsbyimage.jpg" alt="">
             </div>
           </div>
-          
-           <div class="col-sm-4">
+
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-lg-6 col-md-6">
             <div class="about-content" data-aos="fade-left" data-aos-delay="100">
-              <h5>비밀번호를 잊으셨나요?</h5>
-              
-              <form name="findpwfrm" method="post" role="form" class="php-email-form">
-                <div class="row">
-					<div class="col-sm-9">
-		             <div class="form-group">
-		               <input type="text" name="name" class="form-control" id="name2" placeholder="이름" required="">
-		             </div>
-		            
-		             <div class="form-group mt-3">
-		               <input type="text" name="email" class="form-control" id="email2" placeholder="이메일" required="">
-		             </div>
-		             <div class="form-group mt-3">
-		               <input type="text" name="id" class="form-control" id="id2" placeholder="아이디" required="">
-		             </div>
-	
-	             <div class="my-3">
-
-	             </div>
-	
-	             <div class="text-center"><button id="btn3" type="button" onclick="findPW()">Find PW</button></div>
-	           	
-	           	</div>
-	           	</div>
-	           </form>
-
+              <h2>이미지로 강아지 검색하기</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 원하는 강아지의 상이 있나요? 비슷하게 생긴 강아지들을 검색해볼 수 있어요!</li>
+                <li><i class="bi bi-check-circle"></i> 원하는 이미지를 삽입하면 가장 비슷한 강아지들을 찾아볼 수 있습니다.</li>
+              </ul>
             </div>
           </div>
-          
-          <div class="col-sm-4">
-            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
-              <h5>아직 AbanDog의 회원이 아니신가요?</h5>
-              <h6>회원가입하여 AbanDog의 서비스를 즐겨보세요!</h6>
-              
-              <div class="text-center"><button id="btn3" type="button" onclick="location.href='join'">Join Us</button></div>
-
-            </div>
-          </div>
-          
         </div>
       </div>
-    
-    </section>
-	
+
+    </section><!-- End About Section -->
+
+	<!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-right" data-aos-delay="100">
+              <h2>카테고리별로 강아지 검색하기</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 카테고리별로 강아지를 검색해볼 수 있어요! (성별, 중성화여부, 보호소위치 등)</li>
+                <li><i class="bi bi-check-circle"></i> 단, 중성화된 강아지들의 수는 적다는 것에 유의하세요. 검색결과가 나오지 않을 수 있습니다.</li>
+                <li><i class="bi bi-check-circle"></i> 특징을 순, 또는 온순으로 검색하면 순한 강아지들을 찾아볼 수 있어요.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-left" data-aos-delay="100">
+              <img src="assets/img/searchdogsbycategory.jpg" alt="">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+              <img src="assets/img/searchdog.jpg" alt="">
+            </div>
+          </div>
+
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+              <h2>강아지 정보 확인하기</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 검색한 강아지 중 정보를 확인해보고 싶은 강아지가 있다면 클릭해보세요!</li>
+                <li><i class="bi bi-check-circle"></i> 강아지에 대한 상세정보를 확인해 볼 수 있어요.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-right" data-aos-delay="100">
+              <h2>강아지 정보 확인하기</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 이렇게 강아지에 대한 상세정보를 확인할 수 있습니다.</li>
+                <li><i class="bi bi-check-circle"></i> 입양하고 싶다면 해당 보호소로 전화해보세요!</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-left" data-aos-delay="100">
+              <img src="assets/img/doginfo.jpg" alt="">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+              <img src="assets/img/savedog.jpg" alt="">
+            </div>
+          </div>
+
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+              <h2>강아지 저장하기</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 검색한 강아지 중 마음에 드는 강아지가 있다면 저장해보세요!</li>
+                <li><i class="bi bi-check-circle"></i> 마이페이지에서 저장한 강아지들을 확인해볼 수 있어요.</li>
+                <li><i class="bi bi-check-circle"></i> 이 서비스는 로그인이 필요한 서비스예요.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="about-content" data-aos="fade-right" data-aos-delay="100">
+              <h2>유기견 입양에 대한 정보 확인하기</h2>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 유기견을 입양해야 되는 이유</li>
+                <li><i class="bi bi-check-circle"></i> 유기견을 입양하기 전에 고려해야 되는 것들</li>
+                <li><i class="bi bi-check-circle"></i> 유기견을 입양하는 절차와 유의사항 등을 확인해 볼 수 있어요!</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-lg-5 col-md-5">
+            <div class="about-img" data-aos="fade-left" data-aos-delay="100">
+              <img src="assets/img/aboutdogs.jpg" alt="">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -226,7 +290,7 @@
 			  <div class="col-sm-4">
 			    <img src="assets/img/logo.png">
 			  </div>
-			  
+
               <div class="col-sm-4">
                 <div class="footer-info">
                   <h3>AbanDog</h3>
@@ -245,17 +309,17 @@
                     <strong>Email:</strong> b2nyb2st77@gmail.com<br>
                   </p>
                 </div>
-                
+
                 <div class="social-links">
                   <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                   <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                   <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
                   <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
                 </div>
-                
+
                </div>
 
-			   
+
 
               </div>
 
@@ -288,95 +352,11 @@
   <script src="${pageContext.request.contextPath}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="${pageContext.request.contextPath}/assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="${pageContext.request.contextPath}/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/vendor/php-email-form/validate.js"></script>
   <script src="${pageContext.request.contextPath}/assets/vendor/purecounter/purecounter.js"></script>
   <script src="${pageContext.request.contextPath}/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-  
-  <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.10.0.min.js"></script>
-  <script src="${pageContext.request.contextPath}/assets/js/jquery-1.7.1.min.js" type="text/javascript"></script>
-  
-  <script>
-	  function checkLogin(){
-		  
-		  var id = $("input#id").val();
-		  var pw = $("input#pw").val();
-		  var data = {id:id, pw:pw}
-		  
-		  $.ajax({
-		       url : "${pageContext.request.contextPath}/login",
-		       type : "post",
-		       data : data,
-		       success : function(result) {
-		           if(result == 'fail') {
-		               alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
-		               document.getElementById("id").focus();
-		           } else {
-		        	   alert("Abandog에 오신 것을 환영합니다!");
-		        	   location.href="main";
-		           }
-		       },
-		       error: function(data, status, er) {
-		    	   alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
-		       }
-		       
-		    });
-		  
-	  }
-	  
-	  function findID(){
-		  
-		  var name = $("input#name").val();
-		  var email = $("input#email").val();
-		  var data = {name:name, email:email}
-		  
-		  $.ajax({
-		       url : "${pageContext.request.contextPath}/selectId",
-		       type : "post",
-		       data : data,
-		       success : function(result) {
-		           if(result == "") {
-		               alert("가입하지 않은 아이디이거나, 정보가 일치하지 않습니다. 다시 시도해주세요.");
-		           } else {
-		        	   alert("회원님의 아이디는 " + result + "입니다.");
-		           }
-		       },
-		       error: function(data, status, er) {
-		    	   alert("가입하지 않은 아이디이거나, 정보가 일치하지 않습니다. 다시 시도해주세요.");
-		       }
-		       
-		    });
-		  
-	  }
-	  
-	  function findPW(){
-		  
-		  var name = $("input#name2").val();
-		  var email = $("input#email2").val();
-		  var id = $("input#id2").val();
-		  var data = {name:name, email:email, id:id}
-		  
-		  $.ajax({
-		       url : "${pageContext.request.contextPath}/selectPw",
-		       type : "post",
-		       data : data,
-		       success : function(result) {
-		           if(result == "fail") {
-		               alert("가입하지 않은 아이디이거나, 정보가 일치하지 않습니다. 다시 시도해주세요.");
-		           } else {
-		        	   alert("임시비밀번호를 발송했습니다. 로그인 후 비밀번호를 변경해주세요.");
-		           }
-		       },
-		       error: function(data, status, er) {
-		    	   alert("오류가 발생했습니다. 관리자에게 문의 바랍니다.");
-		       }
-		       
-		    });
-		  
-	  }
-  
-  </script>
-  
 </body>
 </html>

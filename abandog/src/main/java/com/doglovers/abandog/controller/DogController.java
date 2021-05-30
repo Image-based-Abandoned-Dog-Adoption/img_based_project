@@ -38,6 +38,16 @@ public class DogController {
 		return "main";
 	}
 	
+	@RequestMapping("/aboutus")
+	public String aboutus(Model model) {
+		return "aboutus";
+	}
+
+	@RequestMapping("/aboutdogs")
+	public String aboutdogs(Model model) {
+		return "aboutdogs";
+	}
+	
 	@RequestMapping("/searchbycategory")
 	public String searchbycategory(Model model) {
 		DogDAO dao =  C.sqlSession.getMapper(DogDAO.class);

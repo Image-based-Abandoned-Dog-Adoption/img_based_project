@@ -43,15 +43,26 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="${pageContext.request.contextPath}/main">Home</a></li>
-          <li class="dropdown"><a href="#"><span>Search Dogs</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="${pageContext.request.contextPath}/searchbyimage">Search Dogs by image</a></li>
-              <li><a href="${pageContext.request.contextPath}/searchbycategory">Search Dogs by category</a></li>
-            </ul>
-          </li>
+          <c:choose>
+          	<c:when test="${loginVO == null}">
+              <li class="dropdown"><a href="#"><span>Search Dogs</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="${pageContext.request.contextPath}/searchbycategory">Search Dogs by category</a></li>
+                </ul>
+              </li>
+          	</c:when>
+          	<c:otherwise>
+              <li class="dropdown"><a href="#"><span>Search Dogs</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="${pageContext.request.contextPath}/searchbyimage">Search Dogs by image</a></li>
+                  <li><a href="${pageContext.request.contextPath}/searchbycategory">Search Dogs by category</a></li>
+                </ul>
+              </li>
+            </c:otherwise>
+          </c:choose>
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-	          <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/aboutus">About Us</a></li>
+	          <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/aboutus">About AbanDog</a></li>
 	          <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/aboutdogs">About Abandoned dogs</a></li>
 	          <li><a class="nav-link scrollto" href="#footer">Contact</a></li>
             </ul>
@@ -93,41 +104,6 @@
   </section><!-- End Hero -->
 
   <main id="main">
-  
-  	<!-- ======= About Section ======= -->
-    <section id="about" class="about">
-
-      <div class="container" data-aos="fade-up">
-        <div class="row">
-
-          <div class="col-lg-5 col-md-5">
-            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
-              <img src="assets/img/puppy.jpg" alt="">
-            </div>
-          </div>
-          
-          <div class="col-md-1">
-          </div>
-
-          <div class="col-lg-6 col-md-6">
-            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
-              <h2>유기견 입양을 해야하는 이유</h2>
-              <ul>
-                <li><i class="bi bi-check-circle"></i> 다양한 종류의 강아지들 중에 선택할 수 있어요.</li>
-                <li><i class="bi bi-check-circle"></i> 희귀한 유전자를 가진 특별한 강아지를 입양할 수 있어요.</li>
-                <li><i class="bi bi-check-circle"></i> 보호소에 가장 많은 종인 믹스견은 순종보다 유전질환이 적어요.</li>
-                <li><i class="bi bi-check-circle"></i> 돈을 절약할 수 있어요.</li>
-                <li><i class="bi bi-check-circle"></i> 의료서비스를 지원받을 수 있어요. (중성화, 예방접종, 건강검사 등)</li>
-                <li><i class="bi bi-check-circle"></i> 이미 훈련받은 강아지를 선택할 수 있어요.</li>
-                <li><i class="bi bi-check-circle"></i> 펫샵에서 강아지를 구입하는 것은 강아지 공장을 지원하는 일이에요.</li>
-                <li><i class="bi bi-check-circle"></i> 생명을 구할 수 있어요.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </section><!-- End About Section -->
 	
     <!-- ======= Features Section ======= -->
     <section id="features" class="features">
@@ -239,7 +215,7 @@
           <div class="col-md-6 col-lg-4 wow" data-aos="zoom-in" data-aos-delay="100">
             <div class="box">
               <div class="icon" style="background: #eafde7;"><i class="bi bi-bar-chart" style="color:#41cf2e;"></i></div>
-              <h4 class="title"><a href="${pageContext.request.contextPath}/aboutus">About Us</a></h4>
+              <h4 class="title"><a href="${pageContext.request.contextPath}/aboutus">About AbanDog</a></h4>
               <p class="description">우리 웹사이트에 대한 설명을 볼 수 있어요.</p>
             </div>
           </div>

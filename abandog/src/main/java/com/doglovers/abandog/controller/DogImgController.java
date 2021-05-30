@@ -76,7 +76,10 @@ public class DogImgController {
 			path = "/home/wndvlf96/imgs/";
 			folder_dir = "/home/wndvlf96/imgs";
 		}
-		String fileNewName = imgId + "." + ext; // 새로운 파일 네임 지정
+		HttpServletRequest httpRequest = (HttpServletRequest) request;
+		HttpSession session = httpRequest.getSession();
+		String ids = session.getId();
+		String fileNewName = ids+imgId + "." + ext; // 새로운 파일 네임 지정
 		uploadPath = path + fileNewName;
 		System.out.println(uploadPath);
 		// 경로에 path가 없다면 생성하기
@@ -97,14 +100,14 @@ public class DogImgController {
 		mf.transferTo(temp); // 파일을 위 지정 경로로 업로드
 		
 		String result_cids = "";
-
+		int flag = 0;
 		int idx = 0;
 		System.out.println("---------------------------------------");
 		if (request.getRequestURL().indexOf("localhost") < 0) {
 			//실서버				
 			// 파이썬동작확인.
 			String[] cmd3 = new String[3];
-			cmd3[0] = "python3";	//파이썬3 실행
+			cmd3[0] = "python3.7";	//파이썬3 실행
 			cmd3[1] = "/home/wndvlf96/abandog/imgtest.py"; // 파이썬 파일 경로
 			cmd3[2] = fileNewName; // 새롭게 저장된 사진의 이름
 				
@@ -115,13 +118,21 @@ public class DogImgController {
 			while ((line3 = br3.readLine()) != null) {
 				/* 만약 head말고 다른 부분도 여기서 단다면??? */
 				System.out.println(idx + ": " + line3);
-				if (idx==0) {	//저장된 파일경로 파이썬에서 출력
-					System.out.println("Hi");
+				if (line3.equals("fromhere")) {
+					flag = 1;
 				}
-				else if(idx==1) {
-					result_cids = result_cids.concat(line3);
+				else if(flag==1) {
+					// flag 1이면 비슷한 강아지가 없음
+					if (!line3.equals("error")) {
+						result_cids = result_cids.concat(line3);
+						flag++ ;
+					}
+					else {
+						// flag 0이면 사진상 강아지가 없음
+						flag-- ;
+					}
 				}
-				else {
+				else if(flag > 1) {
 					line3 = ",".concat(line3);
 					result_cids = result_cids.concat(line3);
 				}
@@ -140,10 +151,11 @@ public class DogImgController {
 			Process p3 = Runtime.getRuntime().exec(cmd3);
 			BufferedReader br3 = new BufferedReader(new InputStreamReader(p3.getInputStream(), "EUC-KR"));
 			String line3 = null;
+			
 			while ((line3 = br3.readLine()) != null) {
 				/* 만약 head말고 다른 부분도 여기서 단다면??? */
 				System.out.println(idx + ": " + line3);
-				if (idx==0) {
+				if (idx==0) {	//저장된 파일경로 파이썬에서 출력
 					System.out.println("Hi");
 				}
 				else if(idx==1) {
@@ -159,7 +171,8 @@ public class DogImgController {
 		}
 
 		String[] result_arr = result_cids.split(",");		// 하나하나가 결과의 cid들
-		
+		// flag == 1 => 사진에 강아지 없음
+		// flag == 
 		for (int k = 0 ; k < result_arr.length;k++) {
 			System.out.println(result_arr[k]);
 		}
@@ -181,6 +194,7 @@ public class DogImgController {
 		model.addAttribute("neuter", 0);
 		model.addAttribute("location", 0);
 		model.addAttribute("cid_result",result_cids);
+		model.addAttribute("flag",flag);
 		return "imgUploadTest";
 	}
 	@RequestMapping("/getDogList_cids")

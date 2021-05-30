@@ -43,15 +43,26 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="${pageContext.request.contextPath}/main">Home</a></li>
-          <li class="dropdown"><a href="#"><span>Search Dogs</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="${pageContext.request.contextPath}/searchbyimage">Search Dogs by image</a></li>
-              <li><a href="${pageContext.request.contextPath}/searchbycategory">Search Dogs by category</a></li>
-            </ul>
-          </li>
+          <c:choose>
+          	<c:when test="${loginVO == null}">
+              <li class="dropdown"><a href="#"><span>Search Dogs</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="${pageContext.request.contextPath}/searchbycategory">Search Dogs by category</a></li>
+                </ul>
+              </li>
+          	</c:when>
+          	<c:otherwise>
+              <li class="dropdown"><a href="#"><span>Search Dogs</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="${pageContext.request.contextPath}/searchbyimage">Search Dogs by image</a></li>
+                  <li><a href="${pageContext.request.contextPath}/searchbycategory">Search Dogs by category</a></li>
+                </ul>
+              </li>
+            </c:otherwise>
+          </c:choose>
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-	          <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/aboutus">About Us</a></li>
+	          <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/aboutus">About AbanDog</a></li>
 	          <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/aboutdogs">About Abandoned dogs</a></li>
 	          <li><a class="nav-link scrollto" href="#footer">Contact</a></li>
             </ul>
@@ -239,63 +250,78 @@
   <!-- Template Main JS File -->
   <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
   
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.10.0.min.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/jquery-1.7.1.min.js" type="text/javascript"></script>
   
   <script>
 	  function checkId(){
 		  
 		  var id = $("input#id").val();
-		  var data = {id:id}
 		  
-		  $.ajax({
-		       url : "${pageContext.request.contextPath}/checkId",
-		       type : "post",
-		       data : data,
-		       success : function(result) {
-		           if(result == 'fail') {
-		               alert("이미 존재하는 아이디입니다.");
-		               document.getElementById("id").focus();
-		               $("input#checkId_").val(0);
-		           } else {
-		        	   alert("사용가능한 아이디입니다.");
-		        	   $("input#checkId_").val(1);
-		           }
-		       },
-		       error: function(data, status, er) {
-		           alert("[error] data : " + data + ", status : " + status);
-		       }
-		       
-		    });
+		  var RegExp = /^[a-zA-z0-9]{4,12}$/;
+			
+		  if (!RegExp.test(id)) {
+	          alert("아이디는 영문 대소문자와 숫자 4~12자리로 입력해야합니다");
+	          document.getElementById("id").focus();
+	      }else{
+	    	  
+			  var data = {id:id}
+			  
+			  $.ajax({
+			       url : "${pageContext.request.contextPath}/checkId",
+			       type : "post",
+			       data : data,
+			       success : function(result) {
+			           if(result == 'fail') {
+			               alert("이미 존재하는 아이디입니다.");
+			               document.getElementById("id").focus();
+			               $("input#checkId_").val(0);
+			           } else {
+			        	   alert("사용가능한 아이디입니다.");
+			        	   $("input#checkId_").val(1);
+			           }
+			       },
+			       error: function(data, status, er) {
+			    	   alert("오류가 발생했습니다. 관리자에게 문의 바랍니다.");
+			       }
+			       
+			    });	
+	        } 
 		  
 	  }
 	  
 	  function checkEmail(){
 		  
 		  var email = $("input#email").val();
-		  var data = {email:email}
+		  var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		  
-		  $.ajax({
-		       url : "${pageContext.request.contextPath}/checkEmail",
-		       type : "post",
-		       data : data,
-		       success : function(result) {
-		           if(result == 'fail') {
-		               alert("이미 존재하는 이메일입니다.");
-		               document.getElementById("email").focus();
-		               $("input#checkEmail_").val(0);
-		           } else {
-		        	   alert("사용가능한 이메일입니다.");
-		        	   alert("이메일 인증번호를 발송 중입니다. 잠시만 기다려주세요.");
-		        	   $("input#checkEmail_").val(1);
-		        	   checkEmail2();
-		           }
-		       },
-		       error: function(data, status, er) {
-		           alert("[error] data : " + data + ", status : " + status);
-		       }
-		       
-		    });
+		  if (email.match(regExp) != null) { 
+			  var data = {email:email}
+			  
+			  $.ajax({
+			       url : "${pageContext.request.contextPath}/checkEmail",
+			       type : "post",
+			       data : data,
+			       success : function(result) {
+			           if(result == 'fail') {
+			               alert("이미 존재하는 이메일입니다.");
+			               document.getElementById("email").focus();
+			               $("input#checkEmail_").val(0);
+			           } else {
+			        	   alert("사용가능한 이메일입니다.");
+			        	   alert("이메일 인증번호를 발송 중입니다. 잠시만 기다려주세요.");
+			        	   $("input#checkEmail_").val(1);
+			        	   checkEmail2();
+			           }
+			       },
+			       error: function(data, status, er) {
+			    	   alert("오류가 발생했습니다. 관리자에게 문의 바랍니다.");
+			       }
+			       
+			    });
+		   } else { 
+			   alert("이메일 형식으로 입력해주세요."); 
+		   }
 		  
 	  }
 	  
