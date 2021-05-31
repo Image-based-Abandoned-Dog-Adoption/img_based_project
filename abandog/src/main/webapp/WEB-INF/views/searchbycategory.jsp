@@ -41,7 +41,8 @@
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
-        <li><a class="nav-link scrollto active" href="${pageContext.request.contextPath}/main">Home</a></li>
+      	<ul>
+        	<li><a class="nav-link scrollto active" href="${pageContext.request.contextPath}/main">Home</a></li>
             <li class="dropdown"><a href="#"><span>Search Dogs</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li><a href="${pageContext.request.contextPath}/searchbyimage">Search Dogs by image</a></li>
@@ -98,11 +99,11 @@
       <div class="container" data-aos="fade-up">
         <div class="section-header">        
           <form name="frm" method="post" accept-charset="utf-8" action="searchbycategory2">
-	          <table>
+	          <table class="searchtable">
 	          	<tr>
-	          		<td>
+	          		<th>
 	          			<label id="letter" for="select">성별</label>
-	          		</td>
+	          		</th>
 	          		<td>
 						<select name="gender" id="select">
 						  <option value="0" <c:if test="${gender == 0}">selected</c:if>>선택안함</option>
@@ -110,9 +111,11 @@
 						  <option value="2" <c:if test="${gender == 2}">selected</c:if>>수컷</option>
 						</select>
 	          		</td>
-	          		<td>
+	          	</tr>
+	          	<tr>
+	          		<th>
 	          			<label id="letter" for="select">중성화여부</label>
-	          		</td>
+	          		</th>
 	          		<td>
 						<select name="neuter" id="select">
 						  <option value="0" <c:if test="${neuter == 0}">selected</c:if>>선택안함</option>
@@ -120,9 +123,11 @@
 						  <option value="2" <c:if test="${neuter == 2}">selected</c:if>>X</option>
 						</select>
 	          		</td>
-	          		<td>
+	          	</tr>
+	          	<tr>
+	          		<th>
 	          			<label id="letter" for="select">보호소 지역</label>
-	          		</td>
+	          		</th>
 	          		<td>
 						<select name="location" id="select">
 						  <option value="0" <c:if test="${location == 0}">selected</c:if>>선택안함</option>
@@ -145,12 +150,11 @@
 						  <option value="17" <c:if test="${location == 17}">selected</c:if>>충청북도</option>
 						</select>
 	          		</td>
-	          		<td></td>
 	          	</tr>
 	          	<tr>
-	          		<td>
+	          		<th>
 	          			<label id="letter" for="select">종</label>
-	          		</td>
+	          		</th>
 	          		<td>
 						<select name="kind" id="select">
 						  <option value="null" <c:if test="${kind == 'null'}">selected</c:if>>선택안함</option>
@@ -159,9 +163,11 @@
 						  </c:forEach>
 						</select>
 	          		</td>
-	          		<td>
+	          	</tr>
+	          	<tr>
+	          		<th>
 	          			<label id="letter" for="select">나이</label>
-	          		</td>
+	          		</th>
 	          		<td>
 						<select name="age" id="select">
 						  <option value="null" <c:if test="${age == 'null'}">selected</c:if>>선택안함</option>
@@ -170,18 +176,22 @@
 						  </c:forEach>
 						</select>
 	          		</td>
-	          		<td>
+	          	</tr>
+	          	<tr>
+	          		<th>
 	          			<label id="letter" for="input">특징</label>
-	          		</td>
+	          		</th>
 	          		<td>
 						<input id="mark" type="text" name="marks" value="${marks}">
 	          		</td>
-	          		<td>
-						 <input type="button" id="btn" onclick="search()" value="검색">		
-	          		</td>
 	          	</tr>
 	          	
-	          </table>
+	            <tr>
+	          		<th>
+						 <input type="button" id="btn" onclick="search()" value="검색" style="margin:11px">		
+	          		</th>
+	          	</tr>	
+	        </table>
 
 			 <input type="hidden" name="page" value="1">
 

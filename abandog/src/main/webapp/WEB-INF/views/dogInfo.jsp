@@ -111,17 +111,17 @@
               <div class="features clearfix" data-aos="fade-up" data-aos-delay="200">
                 <i class="bi bi-box-seam" style="color: #ffb774;"></i>
                 <h4>보호소 정보</h4>
-                <table style="margin-top:30px">
+                <table style="margin-top:30px;">
                 	<tr>
-                		<td><p><strong>보호소 이름</strong></p></td>
+                		<th><p><strong>보호소 이름</strong></p></th>
                 		<td><p>${dog.careNm}</p></td>
                 	</tr>
                 	<tr>
-                		<td><p><strong>보호소 전화번호</strong></p></td>
+                		<th><p><strong>보호소 전화번호</strong></p></th>
                 		<td><p>${dog.careTel}</p></td>
                 	</tr>
                 	<tr>
-                		<td><p><strong>보호소 주소</strong></p></td>
+                		<th><p><strong>보호소 주소</strong></p></th>
                 		<td><p>${dog.careAddr}</p></td>
                 	</tr>
                 </table>
@@ -132,19 +132,19 @@
                 <h4>강아지 정보</h4>
                 <table style="margin-top:30px">
                 	<tr>
-                		<td><p><strong>종</strong></p></td>
+                		<th><p><strong>종</strong></p></th>
                 		<td><p>${dog.kind}</p></td>
                 	</tr>
                 	<tr>
-                		<td><p><strong>색깔</strong></p></td>
+                		<th><p><strong>색깔</strong></p></th>
                 		<td><p>${dog.color}</p></td>
                 	</tr>
                 	<tr>
-                		<td><p><strong>출생년도</strong></p></td>
+                		<th><p><strong>출생년도</strong></p></th>
                 		<td><p>${dog.age}</p></td>
                 	</tr>
                 	<tr>
-                		<td><p><strong>성별</strong></p></td>
+                		<th><p><strong>성별</strong></p></th>
                 		<c:choose>
 		                	<c:when test="${dog.sex == 'F'}">
 		                		<td><p>암컷</p></td>
@@ -158,7 +158,7 @@
 		                </c:choose>
                 	</tr>
                 	<tr>
-                		<td><p><strong>중성화여부</strong></p></td>
+                		<th><p><strong>중성화여부</strong></p></th>
                 		<c:choose>
 		                	<c:when test="${dog.neuter == 'Y'}">
 		                		<td><p>O</p></td>
@@ -174,7 +174,7 @@
                 	<c:choose>
                 		<c:when test="${dog.marks != null}">
 		                	<tr>
-		                		<td><p><strong>특징</strong></p></td>
+		                		<th><p><strong>특징</strong></p></th>
 		                		<td><p>${dog.marks}</p></td>
 		                	</tr>
 		                </c:when>

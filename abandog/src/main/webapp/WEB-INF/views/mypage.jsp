@@ -145,6 +145,7 @@
       <div class="container" data-aos="fade-up">
           <div class="section-header">
           	<h3>저장한 강아지 목록</h3>
+          	<p>저장 중이던 강아지가 더 이상 보호 중이 아니게 되면 목록에서 사라지니, <br>입양하고 싶다면 보호소에 빨리 연락하세요!</p>
           </div>
           <br><br>
         <div class="row">
