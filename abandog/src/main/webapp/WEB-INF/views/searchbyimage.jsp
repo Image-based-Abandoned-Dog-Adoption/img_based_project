@@ -51,6 +51,9 @@
 <body>
 
 	<!-- ======= Header ======= -->
+	<div id="mask">
+		<img src="${pageContext.request.contextPath}/assets/img/loading.gif">
+	</div>
 	<header id="header"
 		class="fixed-top d-flex align-items-center header-transparent">
 		<div class="container d-flex align-items-center">
@@ -271,6 +274,7 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
+			
 			/*
 			var page = $("input#page").val();
 			var gender = $("input#gender").val();
@@ -315,13 +319,24 @@
 				alert("이미지를 첨부해주세요.");
 				return false;
 			}
+			wrapWindowByMask();
 			return true;
 		}
-		/* 이미지검증 세부페이지의 상세보기로 가기 */
-		function view_result_detail() {
-			document.imgRecogResultDetailFrm.action = "/imgRecog_result_detail.do";
-			document.imgRecogResultDetailFrm.submit();
-		};
+		
+		
+		
+		function wrapWindowByMask(){
+	        //화면의 높이와 너비를 구한다.
+	        var maskHeight = $(document).height();  
+	        var maskWidth = $(window).width();  
+			
+	        //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
+	        $('#mask').css({'width':maskWidth,'height':maskHeight});  
+			
+	        //애니메이션 효과
+	        $('#mask').fadeIn(1000);      
+	        $('#mask').fadeTo("slow",0.8);    
+		}
 		/*
 		function search(){
 			var frm = document.frm;

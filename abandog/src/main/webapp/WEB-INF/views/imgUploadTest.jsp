@@ -147,9 +147,11 @@
         <div class="row" id="result">
     
         </div>
-        
-        <article id="paging" class="paging">			
-		</article>
+        <form name="frm" method="post" accept-charset="utf-8" action="getDogList_cids2">
+        	<input type="hidden" name="page" value="1">
+        	<article id="paging" class="paging">			
+			</article>
+		</form>
 
       </div>
     </section><!-- End Team Section -->
@@ -257,7 +259,9 @@
 			alert("비슷한 강아지가 없습니다.");
 		}
 	    loadPage(page, gender, neuter, location, cids);
-	   	//showPagination();
+	   	showPagination();
+	   	
+	   	console.log(cids);
 	 });
 	/*
 	function search(){
@@ -338,7 +342,7 @@
 	 function loadPage(page, gender, neuter, location, cids) {
 
 	    $.ajax({
-	       url : "${pageContext.request.contextPath}/getDogList_cids?page=" + page + "&gender=" + gender + "&neuter=" + neuter + "&location=" + location + "&cids=" + cids,
+	       url : "${pageContext.request.contextPath}/getDogList_cids2?page=" + page + "&gender=" + gender + "&neuter=" + neuter + "&location=" + location + "&cids=" + $("input#cids").val(),
 	       type : "get",
 	       dataType: 'json',
 	       ontentType:  "application/json",

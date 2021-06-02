@@ -1893,4 +1893,14 @@ a .dog_img {
     background:#ccc;
   }
 
-} 
+}
+#mask {  
+  position:absolute;  
+  left:0;
+  top:0;
+  z-index:9000;  
+  background-color:#000;  
+  display:none;  
+  text-align:center;
+  padding-top: 30%;
+}

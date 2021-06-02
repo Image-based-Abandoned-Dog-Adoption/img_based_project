@@ -182,7 +182,7 @@
 	          			<label id="letter" for="input">특징</label>
 	          		</th>
 	          		<td>
-						<input id="mark" type="text" name="marks" value="${marks}">
+						<input id="mark" type="text" name="marks" placeholder = "예 : 온순, 유순, 순" value="${marks}">
 	          		</td>
 	          	</tr>
 	          	

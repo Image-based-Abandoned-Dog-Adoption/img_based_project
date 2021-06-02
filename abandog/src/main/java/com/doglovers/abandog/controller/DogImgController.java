@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Base64.Encoder;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +33,7 @@ import com.doglovers.abandog.dao.DogDAO;
 import com.doglovers.abandog.dao.DogDAOImg;
 import com.doglovers.abandog.dto.C;
 import com.doglovers.abandog.dto.DogDTO;
+import com.doglovers.abandog.dto.DogImgDTO;
 import com.doglovers.abandog.dto.Pagination;
 import com.doglovers.abandog.dto.Result;
 
@@ -204,7 +206,7 @@ public class DogImgController {
 		ArrayList<DogDTO> list = dao.selectDogList(pagination);
 		result.setList(list);
 		result.setCount(list.size());*/
-		model.addAttribute("total", dao.selectDogListNum());
+		model.addAttribute("total", result_arr.length);
 		model.addAttribute("page", 1);
 		model.addAttribute("gender", 0);
 		model.addAttribute("neuter", 0);
@@ -216,10 +218,43 @@ public class DogImgController {
 	@RequestMapping("/getDogList_cids")
 	@ResponseBody
 	public Result getDogList_cids(Model model, int page, int gender, int neuter, int location, String cids) {
+		model.addAttribute("page", 1);
+		model.addAttribute("gender", gender);
+		model.addAttribute("neuter", neuter);
+		model.addAttribute("location", location);
+		
+		Pagination pagination = new Pagination();
+		System.out.println("img"+cids);
+		// cids를 배열로 바꾸기
+		String[] cids_arr = cids.split(",");		// 하나하나가 결과의 cid들
+		
+		pagination.setListSize(12);
+		pagination.setStartList((1 - 1) * 12);
+		pagination.setGender(gender);
+		pagination.setNeuter(neuter);
+		pagination.setLocation(location);
+		
+		DogDAOImg dao =  C.sqlSession.getMapper(DogDAOImg.class);
+		model.addAttribute("total", cids_arr.length);
+		System.out.println(cids_arr.length);
+		Result result = new Result();
+		DogImgDTO temp = new DogImgDTO(cids_arr, 0);
+		
+		ArrayList<DogDTO> list = dao.selectDogList_cids(temp);
+		result.setList(list);
+		result.setCount(list.size());
+		
+		return result;
+	}
+	
+	@RequestMapping("/getDogList_cids2")
+	@ResponseBody
+	public Result getDogList_cids2(Model model, int page, int gender, int neuter, int location, String cids) {
 		model.addAttribute("page", page);
 		model.addAttribute("gender", gender);
 		model.addAttribute("neuter", neuter);
 		model.addAttribute("location", location);
+		
 		Pagination pagination = new Pagination();
 		System.out.println("img"+cids);
 		// cids를 배열로 바꾸기
@@ -232,9 +267,11 @@ public class DogImgController {
 		pagination.setLocation(location);
 		
 		DogDAOImg dao =  C.sqlSession.getMapper(DogDAOImg.class);
+		model.addAttribute("total", cids_arr.length);
 		Result result = new Result();
+		DogImgDTO temp = new DogImgDTO(cids_arr, ((page - 1) * 12) );
 		
-		ArrayList<DogDTO> list = dao.selectDogList_cids(cids_arr);
+		ArrayList<DogDTO> list = dao.selectDogList_cids(temp);
 		result.setList(list);
 		result.setCount(list.size());
 		
